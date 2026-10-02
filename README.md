@@ -1,4 +1,4 @@
-# 🕌 موقع مدرسة التربية بالقرآن الكريم — الفرونت إند
+# 🕌 موقع مدرسة القرءان الكريم بقرية معجون — الفرونت إند
 
 Next.js 15 (App Router) + React 19 + TypeScript + Tailwind CSS v4 + Framer Motion، متصل بالكامل بالباك إند
 (NestJS) اللي بنيناه، بهوية بصرية بين الكريمي والأخضر، ودعم كامل لاتجاه RTL.
@@ -17,7 +17,7 @@ npm run dev
 
 **متغير البيئة المطلوب** (`.env.local`):
 ```
-NEXT_PUBLIC_API_URL=https://quran-school-nest-js.vercel.app/api/v1
+NEXT_PUBLIC_API_URL=http://localhost:3000/api/v1
 ```
 
 ---
@@ -107,7 +107,7 @@ types/                       أنواع TypeScript مطابقة لشكل بيا�
 ### الطريقة الأولى: الربط المباشر من لوحة تحكم Vercel (الأسهل والموصى بها)
 
 1. توجه إلى [Vercel Dashboard](https://vercel.com/dashboard) واضغط **Add New...** -> **Project**.
-2. اختر مستودع GitHub الخاص بالمشروع: `quran-sms`.
+2. اختر مستودع GitHub الخاص بالمشروع.
 3. سيتعرف Vercel تلقائيًا على الإعدادات:
    - **Framework Preset**: `Next.js`
    - **Root Directory**: `./`
@@ -116,7 +116,7 @@ types/                       أنواع TypeScript مطابقة لشكل بيا�
    - **Install Command**: `npm install`
 4. في قسم **Environment Variables**، أضف المتغير التالي:
    - **Name**: `NEXT_PUBLIC_API_URL`
-   - **Value**: رابط الباك إند الخاص بك (مثال: `https://quran-school-nest-js.vercel.app/api/v1`)
+   - **Value**: رابط الباك إند الخاص بك (مثال: `https://your-backend.vercel.app/api/v1`)
 5. اضغط **Deploy**.
 6. بعد اكتمال النشر، انسخ رابط موقعك من Vercel وضعه في متغير `CORS_ORIGINS` في إعدادات الباك إند (NestJS) للسماح بطلبات الـ API.
 
@@ -135,3 +135,4 @@ types/                       أنواع TypeScript مطابقة لشكل بيا�
 | `NEXT_PUBLIC_API_URL` | رابط الباك إند للإنتاج (اختياري، القيمة الافتراضية محددة بالفعل) |
 
 بمجرد رفع أي تعديلات على فرع `main` أو فتح Pull Request، سيقوم الـ Action تلقائيًا بفحص جودة الكود، فحص الأنواع (TypeScript)، التأكد من سلامة البناء، ومن ثم النشر على Vercel فورًا.
+"# sms-ma3gon-front" 
