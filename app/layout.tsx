@@ -15,7 +15,7 @@ const API_ORIGIN = (() => {
   try {
     return new URL(API_URL).origin;
   } catch {
-    return "https://quran-school-nest-js.vercel.app";
+    return "https://sms-ma3gon-back.vercel.app";
   }
 })();
 
@@ -34,7 +34,7 @@ const ruqaa = Aref_Ruqaa({
   display: "swap",
 });
 
-const SITE_TITLE = "مدرسة التربية بالقرآن الكريم";
+const SITE_TITLE = "مدرسة القرءان الكريم بقرية معجون";
 const SITE_DESCRIPTION =
   "منصة تعليمية شاملة لتحفيظ القرآن الكريم والتفسير والتجويد والعلوم الشرعية، مع متابعة مستمرة لتقدم الطلاب.";
 
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_TITLE,
-  appleWebApp: { capable: true, title: "مدرسة التربية", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: "مدرسة القرءان", statusBarStyle: "default" },
   formatDetection: { telephone: false, email: false, address: false },
   // معاينة المشاركة على واتساب/فيسبوك/تويتر — من غيرها اللينك بيظهر عاري من غير عنوان ولا صورة
   openGraph: {
@@ -56,13 +56,13 @@ export const metadata: Metadata = {
     siteName: SITE_TITLE,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: [{ url: "/final-logo.jpeg", width: 1024, height: 1034, alt: SITE_TITLE }],
+    images: [{ url: "/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg", width: 1024, height: 1034, alt: SITE_TITLE }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/final-logo.jpeg"],
+    images: ["/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg"],
   },
 };
 
@@ -80,7 +80,7 @@ const headInitScript = `(function(){
     var d = s ? s === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (d) { document.documentElement.classList.add("dark"); }
     var m = document.querySelector('meta[name="theme-color"]');
-    if (m) { m.setAttribute("content", d ? "#0d0b09" : "#ecf0de"); }
+    if (m) { m.setAttribute("content", d ? "#060911" : "#f4f6fa"); }
   } catch(e) {}
   try {
     if (typeof MutationObserver !== 'undefined') {
@@ -105,7 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${tajawal.variable} ${ruqaa.variable}`}
     >
       <head>
-        <meta name="theme-color" content="#ecf0de" />
+        <meta name="theme-color" content="#f4f6fa" />
         {/* فتح الاتصال بالباك إند مبكرًا (DNS + TLS) عشان أول طلب يبقى أسرع */}
         <link rel="preconnect" href={API_ORIGIN} crossOrigin="anonymous" />
         <link rel="dns-prefetch" href={API_ORIGIN} />

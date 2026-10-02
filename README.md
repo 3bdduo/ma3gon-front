@@ -17,7 +17,7 @@ npm run dev
 
 **متغير البيئة المطلوب** (`.env.local`):
 ```
-NEXT_PUBLIC_API_URL=http://localhost:3000/api/v1
+NEXT_PUBLIC_API_URL=https://sms-ma3gon-back.vercel.app/api/v1
 ```
 
 ---

@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://quran-school-nest-js.vercel.app/api/v1";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://sms-ma3gon-back.vercel.app/api/v1";
 const TOKEN_COOKIE = "qs_token";
 
 export class ApiError extends Error {
