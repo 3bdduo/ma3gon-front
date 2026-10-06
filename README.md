@@ -136,3 +136,4 @@ types/                       أنواع TypeScript مطابقة لشكل بيا�
 
 بمجرد رفع أي تعديلات على فرع `main` أو فتح Pull Request، سيقوم الـ Action تلقائيًا بفحص جودة الكود، فحص الأنواع (TypeScript)، التأكد من سلامة البناء، ومن ثم النشر على Vercel فورًا.
 "# sms-ma3gon-front" 
+"# ma3gon-front" 
