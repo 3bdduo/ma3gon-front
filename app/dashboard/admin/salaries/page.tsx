@@ -337,7 +337,7 @@ export default function AdminSalariesPage() {
             className="btn-outline flex items-center gap-2 text-xs !py-2 !px-3 rounded-xl border border-line hover:border-brand/40 transition-colors"
             title="تصدير مسير الرواتب لإكسل"
           >
-            <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
+            <FileSpreadsheet className="w-4 h-4 text-brand-ink" />
             {exportLoading ? "جاري التصدير..." : "تصدير مسير الرواتب"}
           </button>
 
@@ -505,7 +505,7 @@ export default function AdminSalariesPage() {
                         {hasBase ? (
                           <span className="text-ink">{(t.baseSalary || 0).toLocaleString()} ج.م</span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-md">
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-gold-ink bg-gold-soft/50 px-2 py-0.5 rounded-md">
                             غير محدد
                           </span>
                         )}
@@ -515,7 +515,7 @@ export default function AdminSalariesPage() {
                       <td className="p-3.5">
                         {t.incentiveAmount ? (
                           <div className="space-y-1">
-                            <span className="inline-flex items-center gap-1 font-bold text-emerald-600 text-xs bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-md">
+                            <span className="inline-flex items-center gap-1 font-bold text-brand-ink text-xs bg-brand-soft/50 px-2 py-0.5 rounded-md">
                               <TrendingUp className="w-3 h-3" />
                               +{t.incentiveAmount.toLocaleString()} ج.م
                             </span>
@@ -565,10 +565,10 @@ export default function AdminSalariesPage() {
                         <span
                           className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold ${
                             isPaid
-                              ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
+                              ? "bg-brand-soft text-brand-ink"
                               : isAdvance
-                              ? "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"
-                              : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                              ? "bg-gold-soft text-gold-ink"
+                              : "bg-line text-ink-mute"
                           }`}
                         >
                           {isPaid ? (
@@ -613,7 +613,7 @@ export default function AdminSalariesPage() {
                             {!isPaid && (
                               <button
                                 onClick={() => handleQuickPay(t)}
-                                className="text-white bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-sm whitespace-nowrap transition-colors"
+                                className="text-white bg-brand hover:bg-brand-strong px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-sm whitespace-nowrap transition-colors"
                                 title="تسجيل صرف الراتب فوراً"
                               >
                                 <Check className="w-3.5 h-3.5" />
@@ -733,7 +733,7 @@ export default function AdminSalariesPage() {
                           isActive
                             ? "bg-brand text-on-brand shadow-xs"
                             : isDone
-                            ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+                            ? "bg-brand-soft/500/15 text-brand-ink dark:text-brand-strong"
                             : "bg-bg-alt text-ink-mute"
                         }`}
                       >
@@ -886,8 +886,8 @@ export default function AdminSalariesPage() {
               {salaryStep === 2 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-3 duration-200">
                   {/* بطاقة توجيهية */}
-                  <div className="p-3.5 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 text-xs text-emerald-800 dark:text-emerald-300 leading-relaxed flex items-start gap-2.5">
-                    <TrendingUp className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div className="p-3.5 bg-brand-soft/40 rounded-2xl border border-brand/20 text-xs text-brand-ink leading-relaxed flex items-start gap-2.5">
+                    <TrendingUp className="w-5 h-5 text-brand-ink shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-xs">هل يستحق المعلم أي مكافأة أو حافز هذا الشهر؟</strong>
                       <p className="text-[11px] opacity-80 mt-0.5">
@@ -900,11 +900,11 @@ export default function AdminSalariesPage() {
                   <div className="bg-surface p-4 sm:p-5 rounded-2xl border border-line space-y-3">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-ink flex items-center gap-1.5">
-                        <TrendingUp className="w-4 h-4 text-emerald-600" />
+                        <TrendingUp className="w-4 h-4 text-brand-ink" />
                         مبلغ الحافز أو المكافأة (ج.م)
                       </label>
                       {liveIncentive > 0 && (
-                        <span className="text-xs font-bold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-lg">
+                        <span className="text-xs font-bold text-brand-ink bg-brand-soft/40 px-2 py-0.5 rounded-lg">
                           + {liveIncentive.toLocaleString()} ج.م يُضاف للراتب
                         </span>
                       )}
@@ -918,7 +918,7 @@ export default function AdminSalariesPage() {
                         value={incentiveAmountInput}
                         onChange={(e) => setIncentiveAmountInput(e.target.value)}
                         placeholder="0 (اتركه 0 إذا لم يوجد حافز)"
-                        className="field !pl-16 text-lg font-black text-emerald-600"
+                        className="field !pl-16 text-lg font-black text-brand-ink"
                         autoFocus
                       />
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-ink-mute">
@@ -936,8 +936,8 @@ export default function AdminSalariesPage() {
                           onClick={() => setIncentiveAmountInput(amt)}
                           className={`text-xs px-2.5 py-0.5 rounded-lg font-bold border transition-colors ${
                             Number(incentiveAmountInput) === amt
-                              ? "bg-emerald-600 text-white border-emerald-600"
-                              : "bg-emerald-500/5 text-emerald-700 dark:text-emerald-300 border-emerald-500/20 hover:bg-emerald-500/15"
+                              ? "bg-brand text-on-brand border-brand"
+                              : "bg-brand-soft/30 text-brand-ink border-brand/20 hover:bg-brand-soft/60"
                           }`}
                         >
                           +{amt} ج.م
@@ -961,7 +961,7 @@ export default function AdminSalariesPage() {
                   {/* سبب الحافز (يظهر دائماً، ومهم إذا وُجد مبلغ) */}
                   <div className="space-y-2">
                     <label className="block text-xs font-bold text-ink">
-                      سبب أو بند المكافأة {liveIncentive > 0 && <span className="text-emerald-600">*</span>}
+                      سبب أو بند المكافأة {liveIncentive > 0 && <span className="text-brand-ink">*</span>}
                     </label>
                     <input
                       type="text"
@@ -979,7 +979,7 @@ export default function AdminSalariesPage() {
                           type="button"
                           key={s}
                           onClick={() => setIncentiveReasonInput(s)}
-                          className="text-[10px] bg-bg-alt border border-line px-2 py-0.5 rounded-lg text-ink hover:border-emerald-500/40 hover:text-emerald-700 transition-colors"
+                          className="text-[10px] bg-bg-alt border border-line px-2 py-0.5 rounded-lg text-ink hover:border-brand/40 hover:text-brand-ink transition-colors"
                         >
                           {s}
                         </button>
@@ -1091,7 +1091,7 @@ export default function AdminSalariesPage() {
                             setDeductionAmountInput("");
                             setDeductionReasonInput("");
                           }}
-                          className="text-xs px-2 py-0.5 rounded-lg font-bold text-emerald-600 hover:bg-emerald-50"
+                          className="text-xs px-2 py-0.5 rounded-lg font-bold text-brand-ink hover:bg-brand-soft/50"
                         >
                           إلغاء الخصم (0)
                         </button>
@@ -1188,11 +1188,11 @@ export default function AdminSalariesPage() {
                         </div>
 
                         <div className="flex items-center justify-between py-1 border-b border-line/50">
-                          <span className="font-bold flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400">
+                          <span className="font-bold flex items-center gap-1.5 text-brand-ink">
                             <TrendingUp size={14} />
                             2. الحوافز والمكافآت الإضافية:
                           </span>
-                          <span className="font-mono font-bold text-emerald-600">
+                          <span className="font-mono font-bold text-brand-ink">
                             {liveIncentive > 0 ? `+ ${liveIncentive.toLocaleString()} ج.م` : "0 ج.م"}
                           </span>
                         </div>
@@ -1237,8 +1237,8 @@ export default function AdminSalariesPage() {
                     {/* خيارات الحالة كأزرار بطاقات سريعة */}
                     <div className="grid grid-cols-3 gap-2">
                       {[
-                        { val: "paid", label: "تم الصرف (مدفوع)", icon: CheckCircle2, activeColor: "bg-emerald-600 text-white border-emerald-600" },
-                        { val: "unpaid", label: "بانتظار الصرف", icon: Clock, activeColor: "bg-amber-600 text-white border-amber-600" },
+                        { val: "paid", label: "تم الصرف (مدفوع)", icon: CheckCircle2, activeColor: "bg-brand text-on-brand border-brand" },
+                        { val: "unpaid", label: "بانتظار الصرف", icon: Clock, activeColor: "bg-gold text-on-gold border-gold" },
                         { val: "advance", label: "سلفة", icon: Banknote, activeColor: "bg-blue-600 text-white border-blue-600" },
                       ].map((item) => {
                         const Icon = item.icon;
@@ -1365,10 +1365,10 @@ export default function AdminSalariesPage() {
                           <span
                             className={`text-[11px] font-bold px-2 py-0.5 rounded-md ${
                               r.status === "paid"
-                                ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
+                                ? "bg-brand-soft text-brand-ink"
                                 : r.status === "advance"
-                                ? "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"
-                                : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                                ? "bg-gold-soft text-gold-ink"
+                                : "bg-line text-ink-mute"
                             }`}
                           >
                             {r.status === "paid" ? "تم الصرف" : r.status === "advance" ? "سلفة" : "بانتظار الصرف"}
@@ -1386,7 +1386,7 @@ export default function AdminSalariesPage() {
                         </div>
                         <div>
                           <span className="text-ink-mute block">الحوافز:</span>
-                          <span className="font-bold text-emerald-600">
+                          <span className="font-bold text-brand-ink">
                             +{r.incentive_amount ?? 0} ج.م
                           </span>
                           {r.incentive_reason && (

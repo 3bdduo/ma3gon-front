@@ -11,7 +11,7 @@ interface ThemeContextValue {
 }
 
 const STORAGE_KEY = "qs-theme";
-const META_COLORS: Record<Theme, string> = { light: "#ecf0de", dark: "#0d0b09" };
+const META_COLORS: Record<Theme, string> = { light: "#f4f6fa", dark: "#060911" };
 
 const ThemeContext = createContext<ThemeContextValue>({
   theme: "light",

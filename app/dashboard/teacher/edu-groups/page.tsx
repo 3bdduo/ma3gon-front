@@ -483,7 +483,7 @@ export default function TeacherEduGroupsPage() {
             <div className="flex items-center gap-3 text-xs font-bold">
               <span className="text-green-600 dark:text-green-400">حاضر: {presentCount}</span>
               <span className="text-red-500 dark:text-red-400">غائب: {absentCount}</span>
-              <span className="text-amber-500">متأخر: {lateCount}</span>
+              <span className="text-gold">متأخر: {lateCount}</span>
 
               <div className="flex items-center gap-1 mr-2 border-r border-line pr-2">
                 <button
@@ -558,8 +558,8 @@ export default function TeacherEduGroupsPage() {
                               onClick={() => handleAttStatus(r.student_id, "متأخر")}
                               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                                 r.status === "متأخر"
-                                  ? "bg-amber-500 text-white shadow-sm ring-2 ring-amber-500/30"
-                                  : "bg-bg-alt text-ink-mute hover:bg-amber-500/15 hover:text-amber-600"
+                                  ? "bg-gold text-on-gold shadow-sm ring-2 ring-gold/30"
+                                  : "bg-bg-alt text-ink-mute hover:bg-gold-soft hover:text-gold-ink"
                               }`}
                             >
                               متأخر

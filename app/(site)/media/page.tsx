@@ -81,8 +81,8 @@ export default function MediaPage() {
       <Container>
         <SectionHeading
           eyebrow="المكتبة المرئية والصوتية"
-          title="تسجيلات وتلاوات قرآنية موصى بها"
-          description="مختارات منتقاة بعناية من أتقن المصاحف المعلمة، شروح التجويد، وخواطر التفسير"
+          title="مجالس التلاوة ورياض الإتقان القرآني"
+          description="مختارات مرئية وصوتية منتقاة بعناية لضبط مخارج الحروف، سماع التلاوات الخاشعة، ومدارسة أسرار البيان الإلهي"
         />
 
         <Reveal delay={0.1} className="flex flex-wrap justify-center gap-2.5 mt-10">
@@ -171,13 +171,13 @@ export default function MediaPage() {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-soft text-brand-ink text-xs font-bold mb-3">
               <BookOpen size={14} />
-              ترشيحات قرآنية موثوقة
+              روافد قرآنية معتمدة
             </div>
             <h2 className="font-ruqaa font-bold text-3xl sm:text-4xl text-ink leading-snug">
-              أفضل المنصات والمواقع الموصى بها في القرآن الكريم
+              أوثق المنصات الرقمية لخدمة كتاب الله عز وجل
             </h2>
             <p className="text-ink-soft text-sm sm:text-base mt-2.5">
-              مجموعة مختارة من أوثق المنصات الرقمية المعتمدة عالمياً للقراءة، التفسير، والاستماع المباشر
+              بوابات معتمدة ومحركات بحث متخصصة في التفسير والترتيل والمصاحف العثمانية الرسمية تعين كل طالب وباحث
             </p>
           </div>
 
@@ -195,7 +195,7 @@ export default function MediaPage() {
                       <span className="text-[11px] font-bold text-brand-ink bg-brand-soft px-2.5 py-1 rounded-full">
                         {resource.category}
                       </span>
-                      <span className="text-[10px] font-extrabold text-amber-700 bg-amber-500/15 px-2 py-0.5 rounded-md">
+                      <span className="text-[10px] font-extrabold text-gold-ink bg-gold-soft/60 px-2 py-0.5 rounded-md">
                         {resource.badge}
                       </span>
                     </div>

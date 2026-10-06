@@ -73,13 +73,13 @@ export function LogoModal({ open, onClose }: LogoModalProps) {
                 transition={{ type: "spring", stiffness: 90, damping: 14, delay: 0.12 }}
                 className="relative h-44 w-44 rounded-[1.75rem] bg-white overflow-hidden ring-2 ring-gold/60 sh-lift"
               >
-                <Image src="/logo-full.png" alt="شعار مدرسة التربية بالقرآن الكريم" fill sizes="176px" className="object-contain p-2" priority />
+                <Image src="/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg" alt="شعار مدرسة القرءان الكريم بقرية معجون" fill sizes="176px" className="object-contain p-2" priority />
               </m.div>
             </div>
 
             {/* المعلومات */}
             <div className="p-7 text-center" dir="rtl">
-              <h2 className="font-ruqaa text-3xl font-bold text-ink leading-[1.6] mb-1">مدرسة التربية بالقرآن الكريم</h2>
+              <h2 className="font-ruqaa text-3xl font-bold text-ink leading-[1.6] mb-1">مدرسة القرءان الكريم بقرية معجون</h2>
               <p className="text-gold-ink text-sm font-bold mb-4">منصة تعليمية إسلامية متكاملة</p>
               <p className="text-ink-soft text-sm leading-relaxed mb-7">
                 منهج شامل لتحفيظ القرآن الكريم والتفسير والتجويد والعلوم الشرعية، بمتابعة مستمرة من معلمين مؤهلين.

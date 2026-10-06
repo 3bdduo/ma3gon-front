@@ -18,7 +18,7 @@ interface ChatMessage {
 
 const WELCOME: ChatMessage = {
   role: "assistant",
-  text: "أهلاً بك! أنا المساعد الذكي لمدرسة التربية بالقرآن الكريم. كيف يمكنني مساعدتك اليوم؟ يمكنك سؤالي عن أي صفحة، منهج، أو طريقة استخدام للمنصة.",
+  text: "أهلاً بك! أنا المساعد الذكي لمدرسة القرءان الكريم بقرية معجون. كيف يمكنني مساعدتك اليوم؟ يمكنك سؤالي عن أي صفحة، منهج، أو طريقة استخدام للمنصة.",
 };
 
 const SUGGESTIONS = [
@@ -159,7 +159,7 @@ export function AssistantWidget() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="المساعد الذكي لموقع مدرسة التربية بالقرءان الكريم"
+        aria-label="المساعد الذكي لموقع مدرسة القرءان الكريم بقرية معجون"
         aria-hidden={open}
         tabIndex={open ? -1 : 0}
         className={`fixed bottom-5 left-5 z-40 w-14 h-14 rounded-full bg-brand text-on-brand flex items-center justify-center sh-float hover:sh-brand transition-all duration-200 cursor-pointer group ${open ? "opacity-0 pointer-events-none scale-90" : "opacity-100 pointer-events-auto scale-100"
@@ -200,11 +200,11 @@ export function AssistantWidget() {
               {/* رأس المحادثة */}
               <div className="flex items-center justify-between px-3.5 sm:px-4 py-3.5 border-b border-line bg-surface-2/80 backdrop-blur-md gap-2">
                 <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                  {/* لوجو مدرسة التربية بالقرآن الكريم مع إطار ذهبي */}
-                  <div className="w-11 h-11 rounded-full bg-[#f7f9ef] border-2 border-gold/70 shadow-sm shrink-0 flex items-center justify-center overflow-hidden">
+                  {/* لوجو مدرسة القرءان الكريم بقرية معجون مع إطار ذهبي */}
+                  <div className="w-11 h-11 rounded-full bg-surface border-2 border-gold/70 shadow-sm shrink-0 flex items-center justify-center overflow-hidden">
                     <Image
-                      src="/logo-mark.png"
-                      alt="شعار مدرسة التربية بالقرآن الكريم"
+                      src="/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg"
+                      alt="شعار مدرسة القرءان الكريم بقرية معجون"
                       width={44}
                       height={44}
                       className="object-contain p-1"
@@ -213,7 +213,7 @@ export function AssistantWidget() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <h2 className="font-bold text-ink text-xs sm:text-[13px] leading-snug">
-                      المساعد الذكي لموقع مدرسة التربية بالقرءان الكريم
+                      المساعد الذكي لموقع مدرسة القرءان الكريم بقرية معجون
                     </h2>
                   </div>
                 </div>
@@ -256,12 +256,12 @@ export function AssistantWidget() {
                       {/* فقاعة الرسالة */}
                       <div
                         className={`max-w-[84%] rounded-2xl px-4 py-3 text-[14px] sm:text-[14.5px] leading-relaxed shadow-xs transition-colors ${isUser
-                            ? "bg-[#f2eee6] dark:bg-[#25201b] text-[#1a251c] dark:text-[#f5ede3] border border-[#dad2c3] dark:border-[#42372c] rounded-tr-sm"
-                            : "bg-[#eef7ef] dark:bg-[#152e1c] text-[#0d2a14] dark:text-[#f2fbf4] border border-[#b8deb9] dark:border-[#2b5936] rounded-tl-sm"
+                            ? "bg-surface-2 text-ink border border-line rounded-tr-sm"
+                            : "bg-brand-soft/45 dark:bg-brand-soft/65 text-ink border border-brand/20 rounded-tl-sm"
                           }`}
                       >
                         {/* تمييز المصدر بنص صغير */}
-                        <div className={`text-[10px] font-semibold mb-1 ${isUser ? "text-right text-[#7a6e60]" : "text-right text-emerald-700 dark:text-emerald-400"}`}>
+                        <div className={`text-[10px] font-semibold mb-1 ${isUser ? "text-right text-ink-mute" : "text-right text-brand dark:text-brand-strong"}`}>
                           {isUser ? "أنت" : "المساعد"}
                         </div>
 
@@ -287,7 +287,7 @@ export function AssistantWidget() {
                         {/* التوقيت */}
                         {msg.time && (
                           <div
-                            className={`text-[10px] mt-1 ${isUser ? "text-right text-ink-mute/70" : "text-right text-emerald-800/60 dark:text-emerald-300/60"}`}
+                            className={`text-[10px] mt-1 ${isUser ? "text-right text-ink-mute/70" : "text-right text-brand/70 dark:text-brand-strong/70"}`}
                           >
                             {msg.time}
                           </div>
@@ -300,10 +300,10 @@ export function AssistantWidget() {
                 {/* مؤشر جاري الكتابة */}
                 {loading && (
                   <div className="flex justify-start">
-                    <div className="bg-[#eef7ef] dark:bg-[#152e1c] border border-[#b8deb9] dark:border-[#2b5936] rounded-2xl rounded-tl-sm px-4 py-3 shadow-xs">
-                      <div className="text-[10px] font-semibold mb-1 text-right text-emerald-700 dark:text-emerald-400">المساعد</div>
+                    <div className="bg-brand-soft/45 dark:bg-brand-soft/65 border border-brand/20 rounded-2xl rounded-tl-sm px-4 py-3 shadow-xs">
+                      <div className="text-[10px] font-semibold mb-1 text-right text-brand dark:text-brand-strong">المساعد</div>
                       <div className="flex items-center gap-1.5">
-                        <span className="text-xs text-[#0d2a14] dark:text-[#f2fbf4] font-medium ml-1">
+                        <span className="text-xs text-ink font-medium ml-1">
                           يكتب الآن
                         </span>
                         <span className="w-1.5 h-1.5 rounded-full bg-brand animate-bounce [animation-delay:-0.3s]" />

@@ -168,7 +168,7 @@ export function EduAttendanceModal({ isOpen, onClose, eduGroup }: EduAttendanceM
               <span className="flex items-center gap-1 font-bold text-red-500 dark:text-red-400">
                 <XCircle size={15} /> غائب: {absentCount}
               </span>
-              <span className="flex items-center gap-1 font-bold text-amber-500">
+              <span className="flex items-center gap-1 font-bold text-gold">
                 <Clock size={15} /> متأخر: {lateCount}
               </span>
               <span className="text-ink-mute font-bold">
@@ -256,8 +256,8 @@ export function EduAttendanceModal({ isOpen, onClose, eduGroup }: EduAttendanceM
                       onClick={() => handleStatus(r.student_id, "متأخر")}
                       className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                         r.status === "متأخر"
-                          ? "bg-amber-500 text-white shadow-sm ring-2 ring-amber-500/30"
-                          : "bg-bg-alt text-ink-mute hover:bg-amber-500/15 hover:text-amber-600"
+                          ? "bg-gold text-on-gold shadow-sm ring-2 ring-gold/30"
+                          : "bg-bg-alt text-ink-mute hover:bg-gold-soft hover:text-gold-ink"
                       }`}
                     >
                       متأخر

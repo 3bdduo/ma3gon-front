@@ -22,7 +22,7 @@ export default function ContactPage() {
     const formattedMessage = [
       "السلام عليكم ورحمة الله وبركاته،",
       "",
-      "*رسالة جديدة عبر الموقع الإلكتروني - مدرسة التربية بالقرآن الكريم*",
+      "*رسالة جديدة عبر الموقع الإلكتروني - مدرسة القرءان الكريم بقرية معجون*",
       "",
       `*الاسم:* ${form.name.trim()}`,
       `*رقم الهاتف:* ${form.phone.trim()}`,
@@ -31,7 +31,7 @@ export default function ContactPage() {
       form.message.trim(),
     ].join("\n");
 
-    const url = `https://api.whatsapp.com/send?phone=201120449993&text=${encodeURIComponent(formattedMessage)}`;
+    const url = `https://api.whatsapp.com/send?phone=201119838926&text=${encodeURIComponent(formattedMessage)}`;
 
     showToast("تم تجهيز رسالتك! جاري تحويلك إلى واتساب...", "success");
 
@@ -51,8 +51,8 @@ export default function ContactPage() {
         <div className="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10 max-w-5xl mx-auto">
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-4 sm:gap-5 content-start">
             {[
-              { icon: Phone, title: "الهاتف", value: "01120449993", ltr: true },
-              { icon: MapPin, title: "العنوان", value: "مصر , بني سويف , اهناسيا , قرية النويرة", ltr: false },
+              { icon: Phone, title: "الهاتف وواتساب", value: "+20 11 19838926", ltr: true },
+              { icon: MapPin, title: "العنوان", value: "بني سويف - مركز سمسطا - قرية دشطوط - عزبة معجون", ltr: false },
             ].map(({ icon: Icon, title, value, ltr }, i) => (
               <Reveal key={title} delay={i * 0.1} from="start">
                 <div className="group card-interactive flex items-center gap-4 p-5 !rounded-2xl">

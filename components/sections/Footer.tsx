@@ -27,7 +27,7 @@ export function Footer() {
             <Logo size="md" tone="onDeep" />
           </div>
           <p className="text-on-deep-soft text-sm leading-relaxed max-w-xs">
-            منصة تعليمية شاملة لتحفيظ القرآن الكريم وتدريس علومه، بمنهجية تربوية متكاملة ومتابعة مستمرة لكل طالب.
+            صرحٌ إيماني وتربوي رائد يُعنى بتحفيظ كتاب الله تعالى وتدريس علومه بالسند المتصل، لبناء جيل قرآني متقن وراسخ الخُلق.
           </p>
         </Reveal>
 
@@ -52,11 +52,11 @@ export function Footer() {
           <ul className="space-y-3.5 text-sm text-on-deep-soft">
             <li className="flex items-center gap-2.5">
               <Phone size={16} className="text-gold shrink-0" />
-              <span dir="ltr">01120449993</span>
+              <span dir="ltr">01119838926</span>
             </li>
             <li className="flex items-center gap-2.5">
               <MapPin size={16} className="text-gold shrink-0" />
-              مصر , بني سويف , اهناسيا , قرية النويرة
+              بني سويف - مركز سمسطا - قرية دشطوط - عزبة معجون
             </li>
           </ul>
         </Reveal>
@@ -66,7 +66,7 @@ export function Footer() {
 
       <div className="relative border-t border-deep-line py-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
         <Container className="text-center text-xs text-on-deep-soft">
-          © {new Date().getFullYear()} مدرسة التربية بالقرآن الكريم — جميع الحقوق محفوظة
+          © {new Date().getFullYear()} مدرسة القرءان الكريم بقرية معجون — جميع الحقوق محفوظة
         </Container>
       </div>
     </footer>

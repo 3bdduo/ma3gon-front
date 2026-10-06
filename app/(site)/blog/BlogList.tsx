@@ -118,13 +118,13 @@ export default function BlogList() {
         <div className="text-center max-w-xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-soft text-brand-ink text-xs font-bold mb-3">
             <BookOpen size={14} />
-            روابط ومراجع موصى بها
+            روافد ومراجع قرآنية معتمدة
           </div>
           <h2 className="font-ruqaa font-bold text-2xl sm:text-3xl text-ink leading-snug">
-            أهم المواقع والتطبيقات المعتمدة في خدمة القرآن
+            أهم المنصات والتطبيقات الرقمية لخدمة كتاب الله
           </h2>
           <p className="text-ink-soft text-xs sm:text-sm mt-2">
-            روابط مباشرة لأفضل المصاحف الرقمية، محركات البحث في التفسير، وتطبيقات الحفظ
+            مجموعة منتقاة بعناية لأوثق المصاحف الرقمية، بوابات التفسير المعتمدة، وتطبيقات التسميع الذكي
           </p>
         </div>
 
@@ -138,7 +138,7 @@ export default function BlogList() {
               className="card-interactive p-5 !rounded-2xl border border-line hover:border-brand/40 flex flex-col justify-between group"
             >
               <div>
-                <span className="text-[10px] font-bold text-amber-700 bg-amber-500/15 px-2 py-0.5 rounded-md">
+                <span className="text-[10px] font-bold text-gold-ink bg-gold-soft/60 px-2 py-0.5 rounded-md">
                   {r.badge}
                 </span>
                 <h4 className="font-bold text-ink text-sm mt-2.5 group-hover:text-brand-ink transition-colors leading-snug">

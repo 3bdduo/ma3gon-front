@@ -242,7 +242,7 @@ export function AddTeacherWizardModal({
                     <span
                       className={`text-xs px-2 py-0.5 rounded-full font-bold ${
                         isNameValid
-                          ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+                          ? "bg-brand-soft text-brand-ink"
                           : "bg-bg-alt text-ink-mute"
                       }`}
                     >
@@ -266,12 +266,12 @@ export function AddTeacherWizardModal({
                 <div
                   className={`p-3.5 rounded-2xl text-xs leading-relaxed flex items-start gap-2.5 transition-colors ${
                     isNameValid
-                      ? "bg-emerald-50/80 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-300"
+                      ? "bg-brand-soft/60 text-brand-ink border border-brand/25"
                       : "bg-brand-soft/40 text-ink-soft border border-brand-soft"
                   }`}
                 >
                   {isNameValid ? (
-                    <CheckCircle2 size={18} className="text-emerald-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={18} className="text-brand-ink shrink-0 mt-0.5" />
                   ) : (
                     <AlertCircle size={18} className="text-brand-ink shrink-0 mt-0.5" />
                   )}
@@ -308,7 +308,7 @@ export function AddTeacherWizardModal({
                     <span
                       className={`text-xs px-2 py-0.5 rounded-full font-mono font-bold ${
                         nidAnalysis.valid
-                          ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+                          ? "bg-brand-soft text-brand-ink"
                           : "bg-bg-alt text-ink-mute"
                       }`}
                     >
@@ -335,9 +335,9 @@ export function AddTeacherWizardModal({
                   <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200 dark:bg-emerald-950/40 dark:border-emerald-800 space-y-3"
+                    className="p-4 rounded-2xl bg-brand-soft/50 border border-brand/25 space-y-3"
                   >
-                    <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-bold text-xs pb-2 border-b border-emerald-200/60 dark:border-emerald-800/60">
+                    <div className="flex items-center gap-2 text-brand-ink font-bold text-xs pb-2 border-b border-brand/20">
                       <CheckCircle2 size={15} />
                       <span>بيانات تم استخراجها تلقائياً من الرقم القومي:</span>
                     </div>
@@ -380,7 +380,7 @@ export function AddTeacherWizardModal({
                       </div>
                     </div>
 
-                    <p className="text-[11px] text-emerald-800 dark:text-emerald-300 pt-1 flex items-center gap-1.5 font-medium">
+                    <p className="text-[11px] text-brand-ink pt-1 flex items-center gap-1.5 font-medium">
                       <CheckCircle2 size={13} className="shrink-0" />
                       <span>إذا كانت هذه البيانات صحيحة، اضغط &quot;التالي&quot; لمتابعة التسجيل.</span>
                     </p>
@@ -559,7 +559,7 @@ export function AddTeacherWizardModal({
                         title="نسخ كلمة المرور"
                       >
                         {copiedField === "كلمة المرور" ? (
-                          <Check size={16} className="text-emerald-600" />
+                          <Check size={16} className="text-brand-ink" />
                         ) : (
                           <Copy size={16} />
                         )}
@@ -581,7 +581,7 @@ export function AddTeacherWizardModal({
                 animate={{ opacity: 1, scale: 1 }}
                 className="space-y-4 text-center py-2"
               >
-                <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center mb-2 shadow-sm">
+                <div className="w-16 h-16 rounded-full bg-brand-soft text-brand-ink dark:text-brand-strong mx-auto flex items-center justify-center mb-2 shadow-sm">
                   <CheckCircle2 size={36} />
                 </div>
 
@@ -611,7 +611,7 @@ export function AddTeacherWizardModal({
                         title="نسخ اسم المستخدم"
                       >
                         {copiedField === "اسم المستخدم" ? (
-                          <Check size={14} className="text-emerald-600" />
+                          <Check size={14} className="text-brand-ink" />
                         ) : (
                           <Copy size={14} />
                         )}
@@ -631,7 +631,7 @@ export function AddTeacherWizardModal({
                         title="نسخ كلمة المرور"
                       >
                         {copiedField === "كلمة المرور" ? (
-                          <Check size={14} className="text-emerald-600" />
+                          <Check size={14} className="text-brand-ink" />
                         ) : (
                           <Copy size={14} />
                         )}

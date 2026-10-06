@@ -131,10 +131,10 @@ export default function TeacherSalaryPage() {
             <span
               className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ${
                 latestRecord.status === "paid"
-                  ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
+                  ? "bg-brand-soft text-brand-ink"
                   : latestRecord.status === "advance"
-                  ? "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"
-                  : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                  ? "bg-gold-soft text-gold-ink"
+                  : "bg-line text-ink-mute"
               }`}
             >
               {latestRecord.status === "paid" ? (
@@ -167,16 +167,16 @@ export default function TeacherSalaryPage() {
             </div>
 
             {/* الحافز والسبب */}
-            <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
-              <span className="text-xs text-emerald-700 dark:text-emerald-400 font-bold block mb-1 flex items-center gap-1">
+            <div className="p-3.5 rounded-2xl bg-brand-soft/50 border border-brand/20">
+              <span className="text-xs text-brand-ink font-bold block mb-1 flex items-center gap-1">
                 <TrendingUp className="w-3.5 h-3.5" />
                 الحوافز والمكافآت
               </span>
-              <span className="text-lg font-black text-emerald-700 dark:text-emerald-400">
+              <span className="text-lg font-black text-brand-ink">
                 +{(latestRecord.incentive_amount ?? 0).toLocaleString()} ج.م
               </span>
               {latestRecord.incentive_reason ? (
-                <p className="text-xs text-emerald-800 dark:text-emerald-300 mt-1 font-semibold">
+                <p className="text-xs text-brand-ink/80 mt-1 font-semibold">
                   السبب: {latestRecord.incentive_reason}
                 </p>
               ) : (
@@ -273,7 +273,7 @@ export default function TeacherSalaryPage() {
                     <td className="p-4">
                       {r.incentive_amount ? (
                         <div className="space-y-0.5">
-                          <span className="font-bold text-emerald-600 text-xs inline-flex items-center gap-1">
+                          <span className="font-bold text-brand-ink text-xs inline-flex items-center gap-1">
                             <TrendingUp className="w-3 h-3" />
                             +{(r.incentive_amount).toLocaleString()} ج.م
                           </span>
@@ -322,10 +322,10 @@ export default function TeacherSalaryPage() {
                       <span
                         className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold ${
                           r.status === "paid"
-                            ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
+                            ? "bg-brand-soft text-brand-ink"
                             : r.status === "advance"
-                            ? "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"
-                            : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                            ? "bg-gold-soft text-gold-ink"
+                            : "bg-line text-ink-mute"
                         }`}
                       >
                         {r.status === "paid" ? "تم الصرف" : r.status === "advance" ? "سلفة" : "بانتظار الصرف"}

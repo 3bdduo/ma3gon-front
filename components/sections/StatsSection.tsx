@@ -5,10 +5,10 @@ import { CountUp } from "@/components/ui/CountUp";
 import { Reveal } from "@/components/ui/Reveal";
 
 const stats = [
-  { value: 500, label: "طالب وطالبة" },
-  { value: 30, label: "معلم ومعلمة" },
-  { value: 120, label: "حافظ وحافظة" },
-  { value: 8, label: "سنوات خبرة" },
+  { value: 500, label: "طالب وطالبة في مسارات النور" },
+  { value: 30, label: "شيخ ومعلمة بإجازات مسندة" },
+  { value: 140, label: "خاتم وخاتمة لكتاب الله تعالى" },
+  { value: 10, label: "سنوات من العطاء والتأثير المبارك" },
 ];
 
 export function StatsSection() {

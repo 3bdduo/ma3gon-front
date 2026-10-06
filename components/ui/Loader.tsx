@@ -30,13 +30,13 @@ export function Loader({ className, size = "md", label = "جاري التحمي�
         <span aria-hidden="true" className="loader-ring" />
         <span
           className={clsx(
-            "absolute grid place-items-center overflow-hidden rounded-full bg-[#f7f9ef] sh-lift",
+            "absolute grid place-items-center overflow-hidden rounded-full bg-surface sh-lift",
             s.inner,
           )}
         >
           <Image
-            src="/logo-mark.png"
-            alt=""
+            src="/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg"
+            alt="شعار مدرسة القرءان الكريم بقرية معجون"
             width={120}
             height={120}
             priority

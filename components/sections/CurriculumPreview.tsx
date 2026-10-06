@@ -7,9 +7,21 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 
 const tracks = [
-  { icon: BookOpen, title: "تحفيظ القرآن الكريم", desc: "برنامج تحفيظ متدرج بمتابعة يومية وتسميع منتظم." },
-  { icon: Mic2, title: "التفسير والتجويد", desc: "فهم معاني الآيات وإتقان أحكام التلاوة الصحيحة." },
-  { icon: Scale, title: "علوم شرعية", desc: "أساسيات الفقه والسيرة والعقيدة بأسلوب مبسط." },
+  {
+    icon: BookOpen,
+    title: "تحفيظ القرآن وتثبيته",
+    desc: "منهجية علمية راسخة تجمع بين الحفظ المتأني والمراجعة التراكمية اليومية لضمان ثبات الآيات في الصدر كالجبال الرواسي.",
+  },
+  {
+    icon: Mic2,
+    title: "التجويد وضبط الأداء",
+    desc: "دراسة متون التجويد وتصحيح مخارج الحروف وصفاتها بالمشافهة والتلقي المباشر حتى ينطق الطالب بكتاب الله غضاً كما نزل.",
+  },
+  {
+    icon: Scale,
+    title: "التفسير والعلوم الشرعية",
+    desc: "بناء البصيرة والوعي الإيماني عبر تدارس معاني الآيات، السيرة النبوية العطرة، ومكارم الأخلاق والآداب الإسلامية.",
+  },
 ];
 
 export function CurriculumPreview() {
@@ -22,12 +34,12 @@ export function CurriculumPreview() {
       <Container className="relative">
         <SectionHeading
           tone="onDeep"
-          eyebrow="مناهجنا"
-          title="ثلاثة مسارات تعليمية متكاملة"
-          description="كل مسار مصمم ليكمل الآخر، ويشكل معًا رحلة تربوية متوازنة لطالب القرآن"
+          eyebrow="مسارات العلم والتزكية"
+          title="منظومة قرآنية متكاملة تصنع الحافظ المتقن"
+          description="مسارات تعليمية متوازنة تصحب الطالب من التأسيس الصوتي السليم إلى رسوخ الحفظ وتدبر المعاني وبناء الأخلاق"
         />
 
-        <Stagger className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <Stagger className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {tracks.map(({ icon: Icon, title, desc }) => (
             <StaggerItem key={title} className="h-full">
               <div className="group h-full bg-deep-2/80 border border-deep-line rounded-3xl p-6 sm:p-7 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] transition-all duration-300 hover:-translate-y-2 hover:bg-deep-2 hover:border-gold/50 hover:shadow-[0_30px_60px_-18px_rgba(0,0,0,0.75)]">
@@ -44,7 +56,7 @@ export function CurriculumPreview() {
         <Reveal delay={0.2} className="mt-10 sm:mt-12 text-center">
           <ButtonLink href="/curriculum" variant="secondary">
             <ArrowLeft size={18} />
-            كل تفاصيل المناهج
+            استعرض الخطة والمناهج بالتفصيل
           </ButtonLink>
         </Reveal>
       </Container>

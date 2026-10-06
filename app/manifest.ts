@@ -3,19 +3,19 @@ import type { MetadataRoute } from "next";
 // بيخلي الموقع يتثبّت على الشاشة الرئيسية بنفس الشكل في أندرويد وآيفون
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "مدرسة التربية بالقرآن الكريم",
-    short_name: "التربية بالقرآن",
+    name: "مدرسة القرءان الكريم بقرية معجون",
+    short_name: "مدرسة القرءان",
     description: "منصة تعليمية شاملة لتحفيظ القرآن الكريم وعلومه",
     lang: "ar",
     dir: "rtl",
     start_url: "/",
     display: "standalone",
-    background_color: "#ecf0de",
-    theme_color: "#ecf0de",
+    background_color: "#f4f6fa",
+    theme_color: "#f4f6fa",
     icons: [
-      { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
-      { src: "/icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+      { src: "/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg", sizes: "192x192", type: "image/jpeg" },
+      { src: "/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg", sizes: "512x512", type: "image/jpeg" },
+      { src: "/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg", sizes: "512x512", type: "image/jpeg", purpose: "maskable" },
     ],
   };
 }

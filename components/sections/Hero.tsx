@@ -1,20 +1,20 @@
 "use client";
 
 import { m } from "framer-motion";
-import { BookOpenCheck, Users, CheckCircle2 } from "lucide-react";
+import { Sparkles, Award, HeartHandshake } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { IslamicDivider } from "@/components/ui/IslamicDivider";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const line1 = "نُربّي أبناءنا على القرآن الكريم".split(" ");
-const line2 = "حفظًا وفهمًا وتطبيقًا".split(" ");
+const line1 = "نبني قلوبًا تنبضُ بنورِ القرآن".split(" ");
+const line2 = "فصاحةً وخُلُقًا وإتقانًا".split(" ");
 
 const chips = [
-  { icon: BookOpenCheck, label: "منهج متكامل ومتدرج" },
-  { icon: Users, label: "معلمون مؤهلون وإجازات قرآنية" },
-  { icon: CheckCircle2, label: "متابعة مستمرة لكل طالب" },
+  { icon: Sparkles, label: "أثرٌ باقٍ وبناءٌ لشخصية قرآنية سوية" },
+  { icon: Award, label: "شيوخٌ مهرة بأسانيد متصلة وإتقان تام" },
+  { icon: HeartHandshake, label: "رعاية فردية وشراكة دائمة مع الأسرة" },
 ];
 
 /** كلمات العنوان بتدخل واحدة ورا التانية بحركة ناعمة وسريعة. */
@@ -79,7 +79,7 @@ export function Hero() {
           transition={{ duration: 0.35, ease: EASE }}
           className="inline-flex items-center gap-2 text-sm font-bold text-brand-ink bg-brand-soft border border-line px-5 py-2 rounded-full mb-7 sh-soft"
         >
-          رحلة حفظ وتدبر تبدأ من هنا
+          صرحٌ قرآني رائد لغرس النور وبناء الأجيال
         </m.span>
 
         {/* العنوان الرئيسي — خط الرقعة */}
@@ -95,8 +95,8 @@ export function Hero() {
           transition={{ duration: 0.4, delay: 0.2, ease: EASE }}
           className="mt-6 text-base sm:text-lg text-ink-soft max-w-2xl mx-auto leading-relaxed font-medium"
         >
-          منهج متكامل يجمع بين تحفيظ القرآن الكريم، والتفسير والتجويد، والعلوم الشرعية —
-          بمتابعة مستمرة من معلمين مؤهلين لكل طالب.
+          بيئة قرآنية وتربوية ملهمة تأخذ بيد ولدك من الحرف الأول وحتى الإتقان والإجازة بالسند المتصل —
+          إشرافٌ أبوي حانٍ، تصحيحٌ دقيقٌ للتلاوة، وغرسٌ لقيم الوحي في السلوك والوجدان.
         </m.p>
 
         <m.div
@@ -106,10 +106,10 @@ export function Hero() {
           className="mt-9 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto"
         >
           <ButtonLink href="/register" size="lg">
-            سجّل ابنك الآن
+            ابدأ رحلة الغرس المبارك
           </ButtonLink>
           <ButtonLink href="/curriculum" variant="outline" size="lg">
-            تعرّف على المناهج
+            استكشف مساراتنا التعليمية
           </ButtonLink>
         </m.div>
 

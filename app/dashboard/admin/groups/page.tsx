@@ -899,7 +899,7 @@ export default function AdminGroupsPage() {
               </select>
             </div>
 
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 dark:bg-amber-900/20 dark:border-amber-800 dark:text-amber-300">
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-gold-ink dark:bg-amber-900/20 dark:border-amber-800 dark:text-gold-ink">
               ⚠️ سيتم تغيير المعلم المسؤول. الطلاب يظلون في نفس {changeTeacherModal.type === "ring" ? "الحلقة" : "المجموعة"}.
             </div>
 

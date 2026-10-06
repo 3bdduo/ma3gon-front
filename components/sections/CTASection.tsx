@@ -15,14 +15,14 @@ export function CTASection() {
             <div aria-hidden="true" className="absolute -bottom-24 -left-10 h-64 w-64 rounded-full orb-1" />
 
             <h2 className="relative font-ruqaa font-bold text-[clamp(2rem,5.6vw,3.6rem)] leading-[1.65] max-w-2xl mx-auto text-balance">
-              ابدأ رحلة ابنك مع القرآن الكريم اليوم
+              اغرس في صدر ابنك كنزًا لا يفنى.. وتوّج نفسك بتاج الوقار
             </h2>
             <p className="relative mt-4 text-on-deep-soft max-w-xl mx-auto leading-relaxed">
-              التسجيل متاح الآن لكل الفئات العمرية — خطوة بسيطة تفصلكم عن بداية رحلة تربوية متكاملة
+              أبواب التسجيل مفتوحة لاستقبال براعم النور في جميع الحلقات والمستويات — مقاعد محدودة لضمان الرعاية الفردية والإتقان التام لكل طالب.
             </p>
             <div className="relative mt-8 sm:mt-10 flex justify-center">
               <ButtonLink href="/register" variant="secondary" size="lg">
-                سجّل الآن مجانًا
+                انضم إلى عائلة المدرسة وسجّل الآن
               </ButtonLink>
             </div>
           </div>

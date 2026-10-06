@@ -106,7 +106,7 @@ export default function WaitingListPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3 mb-1">
-            <div className="h-10 w-10 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+            <div className="h-10 w-10 rounded-2xl bg-gold-soft/50 text-gold flex items-center justify-center">
               <Clock size={20} />
             </div>
             <h1 className="font-ruqaa font-bold text-2xl sm:text-3xl text-ink">
@@ -119,7 +119,7 @@ export default function WaitingListPage() {
         </div>
 
         {/* عداد */}
-        <div className="flex items-center gap-2 px-4 py-2 bg-amber-500/10 text-amber-600 rounded-2xl font-bold text-sm shrink-0">
+        <div className="flex items-center gap-2 px-4 py-2 bg-gold-soft/50 text-gold-ink rounded-2xl font-bold text-sm shrink-0">
           <Users size={16} />
           {students.length} طالب في الانتظار
         </div>

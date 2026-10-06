@@ -1,22 +1,41 @@
 "use client";
 
-import { BookMarked, GraduationCap, ClipboardCheck, CalendarClock } from "lucide-react";
+import { Scroll, HeartHandshake, ShieldCheck, Compass } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 
 const features = [
-  { icon: BookMarked, title: "منهج متكامل", desc: "تحفيظ، تفسير وتجويد، وعلوم شرعية — في مسار تعليمي واحد متدرج." },
-  { icon: GraduationCap, title: "معلمون مؤهلون", desc: "نخبة من المعلمين أصحاب الإجازات القرآنية والخبرة التربوية الطويلة." },
-  { icon: ClipboardCheck, title: "متابعة مستمرة", desc: "تقارير دورية عن الحفظ والحضور والتقدم، تصل لولي الأمر أولًا بأول." },
-  { icon: CalendarClock, title: "مرونة في المواعيد", desc: "حلقات ومجموعات تعليمية بمواعيد متعددة تناسب جدول الطالب وأسرته." },
+  {
+    icon: Scroll,
+    title: "إتقانٌ بالسند والمشافهة",
+    desc: "غرس مخارج الحروف وأحكام التجويد غضةً طرية كما أُنزلت، بتلقٍ مباشر على أيدي مشايخ مسندين متقنين.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "تربيةٌ بالقرآن لا مجرد تلقين",
+    desc: "نربط الآيات بالخلق والعمل والبر بالوالدين، ليتخرج الطالب قرآناً يمشي على الأرض نوراً ونفعاً لمجتمعه.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "متابعة وثيقة وشراكة مع البيت",
+    desc: "نضع ولي الأمر في قلب الرحلة بتقارير إنجاز وتسميع دورية وتواصل دائم، لتشهد نماء ثمرتك خطوة بخطوة.",
+  },
+  {
+    icon: Compass,
+    title: "تدرّج يلهم الهمة والشغف",
+    desc: "بيئة إيمانية دافئة تزرع حب المسجد والتنافس الشريف في نفوس الصغار، مع مواعيد مدروسة تراعي أوقات دراستهم.",
+  },
 ];
 
 export function FeaturesSection() {
   return (
     <section className="cv-auto py-16 sm:py-24">
       <Container>
-        <SectionHeading eyebrow="لماذا نحن؟" title="تجربة تعليمية متكاملة لأبنائكم" />
+        <SectionHeading
+          eyebrow="لماذا مدرسة معجون؟"
+          title="ركائز تميزنا في تعليم كتاب الله وتزكية النفوس"
+        />
 
         <Stagger className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {features.map(({ icon: Icon, title, desc }) => (
