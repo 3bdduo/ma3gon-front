@@ -66,14 +66,14 @@ export function LogoModal({ open, onClose }: LogoModalProps) {
               <div aria-hidden="true" className="absolute inset-0 pattern-star opacity-[0.12]" />
               <div aria-hidden="true" className="absolute h-64 w-64 rounded-full orb-2" />
               <div aria-hidden="true" className="absolute h-56 w-56 rounded-full border border-dashed border-gold/50 animate-spin-slow" />
-              {/* اللوجو الكامل على بلاطة بيضا عشان الكتابة الغامقة تفضل مقروءة في الدارك */}
+              {/* اللوجو الدائري الكامل للشعار */}
               <m.div
                 initial={{ rotate: -6, scale: 0.9 }}
                 animate={{ rotate: 0, scale: 1 }}
                 transition={{ type: "spring", stiffness: 90, damping: 14, delay: 0.12 }}
-                className="relative h-44 w-44 rounded-[1.75rem] bg-white overflow-hidden ring-2 ring-gold/60 sh-lift"
+                className="relative h-44 w-44 rounded-full overflow-hidden ring-4 ring-gold/70 ring-offset-4 ring-offset-bg-alt sh-float shadow-2xl"
               >
-                <Image src="/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg" alt="شعار مدرسة القرءان الكريم بقرية معجون" fill sizes="176px" className="object-contain p-2" priority />
+                <Image src="/logo-clean.png" alt="شعار مدرسة القرءان الكريم بقرية معجون" fill sizes="176px" className="object-contain select-none" priority />
               </m.div>
             </div>
 

@@ -13,9 +13,9 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#f4f6fa",
     theme_color: "#f4f6fa",
     icons: [
-      { src: "/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg", sizes: "192x192", type: "image/jpeg" },
-      { src: "/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg", sizes: "512x512", type: "image/jpeg" },
-      { src: "/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg", sizes: "512x512", type: "image/jpeg", purpose: "maskable" },
+      { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      { src: "/icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
     ],
   };
 }

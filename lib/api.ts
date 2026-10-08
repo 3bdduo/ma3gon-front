@@ -51,10 +51,11 @@ interface RequestOptions {
   body?: unknown;
   auth?: boolean; // إرفاق التوكن مع الطلب
   params?: Record<string, string | number | undefined>;
+  signal?: AbortSignal;
 }
 
 async function networkRequest<T>(path: string, options: RequestOptions = {}): Promise<T> {
-  const { method = "GET", body, auth = false, params } = options;
+  const { method = "GET", body, auth = false, params, signal } = options;
 
   let url = `${API_URL}${path}`;
   if (params) {
@@ -77,10 +78,18 @@ async function networkRequest<T>(path: string, options: RequestOptions = {}): Pr
   const cacheOptions: RequestInit & { next?: { revalidate: number } } =
     !isBrowser && method === "GET" && !auth ? { next: { revalidate: 60 } } : { cache: "no-store" };
 
+  // مهلة زمنية للطلب: على السيرفر (أثناء الـ build) مهلة 3.5 ثوانٍ فقط حتى لا يتعطل إنشاء الصفحات إذا كان الباك إند بارداً
+  const timeoutMs = isBrowser ? 15_000 : 3_500;
+  const timeoutSignal =
+    typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function"
+      ? AbortSignal.timeout(timeoutMs)
+      : undefined;
+
   const res = await fetch(url, {
     method,
     headers,
     body: body !== undefined ? JSON.stringify(body) : undefined,
+    signal: signal || timeoutSignal,
     ...cacheOptions,
   });
 

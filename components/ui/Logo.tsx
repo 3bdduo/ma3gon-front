@@ -25,18 +25,18 @@ export function Logo({ size = "md", showText = true, tone = "default", className
     <span className={clsx("inline-flex items-center gap-3 text-start", className)}>
       <span
         className={clsx(
-          "relative shrink-0 rounded-full bg-surface sh-lift ring-2 ring-gold/70 ring-offset-2",
+          "relative shrink-0 rounded-full overflow-hidden sh-lift ring-2 ring-gold/70 ring-offset-2",
           tone === "onDeep" ? "ring-offset-deep" : "ring-offset-bg",
           "transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110 group-hover:rotate-[-4deg]",
           s.badge,
         )}
       >
         <Image
-          src="/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg"
+          src="/logo-clean.png"
           alt="شعار مدرسة القرءان الكريم بقرية معجون"
           fill
           sizes="80px"
-          className="object-contain p-[12%]"
+          className="object-contain select-none"
           priority
         />
       </span>

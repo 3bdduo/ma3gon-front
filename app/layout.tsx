@@ -48,6 +48,17 @@ export const metadata: Metadata = {
   applicationName: SITE_TITLE,
   appleWebApp: { capable: true, title: "مدرسة القرءان", statusBarStyle: "default" },
   formatDetection: { telephone: false, email: false, address: false },
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
   // معاينة المشاركة على واتساب/فيسبوك/تويتر — من غيرها اللينك بيظهر عاري من غير عنوان ولا صورة
   openGraph: {
     type: "website",
@@ -56,13 +67,13 @@ export const metadata: Metadata = {
     siteName: SITE_TITLE,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: [{ url: "/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg", width: 1024, height: 1034, alt: SITE_TITLE }],
+    images: [{ url: "/logo.png", width: 800, height: 800, alt: SITE_TITLE }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/Gemini_Generated_Image_s3bugus3bugus3bu.jpeg"],
+    images: ["/logo.png"],
   },
 };
 
@@ -106,6 +117,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <meta name="theme-color" content="#f4f6fa" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         {/* فتح الاتصال بالباك إند مبكرًا (DNS + TLS) عشان أول طلب يبقى أسرع */}
         <link rel="preconnect" href={API_ORIGIN} crossOrigin="anonymous" />
         <link rel="dns-prefetch" href={API_ORIGIN} />
