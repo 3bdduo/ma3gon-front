@@ -18,7 +18,7 @@ interface ChatMessage {
 
 const WELCOME: ChatMessage = {
   role: "assistant",
-  text: "أهلاً بك! أنا المساعد الذكي لمدرسة القرءان الكريم بقرية معجون. كيف يمكنني مساعدتك اليوم؟ يمكنك سؤالي عن أي صفحة، منهج، أو طريقة استخدام للمنصة.",
+  text: "أهلاً بك! أنا المساعد الذكي لمدرسة القرءان الكريم التابعة لجميعة شباب المستقبل. كيف يمكنني مساعدتك اليوم؟ يمكنك سؤالي عن أي صفحة، منهج، أو طريقة استخدام للمنصة.",
 };
 
 const SUGGESTIONS = [
@@ -159,7 +159,7 @@ export function AssistantWidget() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="المساعد الذكي لموقع مدرسة القرءان الكريم بقرية معجون"
+        aria-label="المساعد الذكي لموقع مدرسة القرءان الكريم التابعة لجميعة شباب المستقبل"
         aria-hidden={open}
         tabIndex={open ? -1 : 0}
         className={`fixed bottom-5 left-5 z-40 w-14 h-14 rounded-full bg-brand text-on-brand flex items-center justify-center sh-float hover:sh-brand transition-all duration-200 cursor-pointer group ${open ? "opacity-0 pointer-events-none scale-90" : "opacity-100 pointer-events-auto scale-100"
@@ -200,20 +200,20 @@ export function AssistantWidget() {
               {/* رأس المحادثة */}
               <div className="flex items-center justify-between px-3.5 sm:px-4 py-3.5 border-b border-line bg-surface-2/80 backdrop-blur-md gap-2">
                 <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                  {/* لوجو مدرسة القرءان الكريم بقرية معجون مع إطار ذهبي */}
-                  <div className="w-11 h-11 rounded-full border-2 border-gold/70 shadow-sm shrink-0 flex items-center justify-center overflow-hidden relative">
+                  {/* لوجو مدرسة القرءان الكريم مع إطار ذهبي */}
+                  <div className="w-14 h-9 rounded-xl border border-gold/70 shadow-sm shrink-0 flex items-center justify-center overflow-hidden relative bg-white p-0.5">
                     <Image
-                      src="/logo-clean.png"
-                      alt="شعار مدرسة القرءان الكريم بقرية معجون"
-                      width={44}
-                      height={44}
+                      src="/quran-school-logo.png"
+                      alt="شعار مدرسة القرءان الكريم"
+                      width={56}
+                      height={36}
                       className="object-contain select-none"
                       priority
                     />
                   </div>
                   <div className="min-w-0 flex-1">
                     <h2 className="font-bold text-ink text-xs sm:text-[13px] leading-snug">
-                      المساعد الذكي لموقع مدرسة القرءان الكريم بقرية معجون
+                      المساعد الذكي لمدرسة القرءان الكريم
                     </h2>
                   </div>
                 </div>

@@ -34,7 +34,7 @@ const ruqaa = Aref_Ruqaa({
   display: "swap",
 });
 
-const SITE_TITLE = "مدرسة القرءان الكريم بقرية معجون";
+const SITE_TITLE = "مدرسة القرءان الكريم التابعة لجميعة شباب المستقبل";
 const SITE_DESCRIPTION =
   "منصة تعليمية شاملة لتحفيظ القرآن الكريم والتفسير والتجويد والعلوم الشرعية، مع متابعة مستمرة لتقدم الطلاب.";
 
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_TITLE,
-  appleWebApp: { capable: true, title: "مدرسة القرءان", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: "مدرسة القرءان الكريم", statusBarStyle: "default" },
   formatDetection: { telephone: false, email: false, address: false },
   icons: {
     icon: [
@@ -67,13 +67,13 @@ export const metadata: Metadata = {
     siteName: SITE_TITLE,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: [{ url: "/logo.png", width: 800, height: 800, alt: SITE_TITLE }],
+    images: [{ url: "/quran-school-logo.png", width: 800, height: 400, alt: SITE_TITLE }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/logo.png"],
+    images: ["/quran-school-logo.png"],
   },
 };
 

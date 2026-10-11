@@ -33,7 +33,7 @@ export function FeaturesSection() {
     <section className="cv-auto py-16 sm:py-24">
       <Container>
         <SectionHeading
-          eyebrow="لماذا مدرسة معجون؟"
+          eyebrow="لماذا مدرسة القرءان الكريم؟"
           title="ركائز تميزنا في تعليم كتاب الله وتزكية النفوس"
         />
 

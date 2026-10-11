@@ -56,9 +56,9 @@ export default function LoginPage() {
           className="card p-6 xs:p-8 sm:p-10 !rounded-[2rem]"
         >
           <div className="text-center mb-8 flex flex-col items-center">
-            <Logo size="lg" showText={false} className="mb-4" />
-            <h1 className="font-ruqaa font-bold text-4xl leading-[1.6] text-ink">تسجيل الدخول</h1>
-            <p className="text-sm text-ink-mute mt-1">اختر صفتك وسجّل دخولك للمنصة</p>
+            <Logo size="lg" layout="vertical" showText={false} className="mb-4" />
+            <h1 className="font-ruqaa font-bold text-3xl sm:text-4xl leading-[1.5] text-ink">تسجيل الدخول</h1>
+            <p className="text-xs sm:text-sm text-ink-mute mt-1">مدرسة القرءان الكريم — جمعية شباب المستقبل</p>
           </div>
 
           <div className="grid grid-cols-3 gap-2 mb-6 p-1.5 rounded-3xl bg-bg-alt shadow-[inset_0_1px_3px_rgba(0,0,0,0.12)]" role="tablist">

@@ -10,17 +10,13 @@ import {
   Download,
   Trash2,
   Edit2,
-  UserCheck,
-  Layers,
   ChevronDown,
   ChevronUp,
   GraduationCap,
-  ShieldCheck,
   Eye,
-  KeyRound,
-  Phone,
   UserRound,
 } from "lucide-react";
+
 import { eduGroupsApi, studentsApi, groupsApi } from "@/lib/resources";
 import { downloadFile } from "@/lib/download";
 import { useToast } from "@/components/ui/Toast";
@@ -28,6 +24,7 @@ import { Loader } from "@/components/ui/Loader";
 import { Button } from "@/components/ui/Button";
 import { StudentSelectorModal } from "@/components/edu/StudentSelectorModal";
 import { EduAttendanceModal } from "@/components/edu/EduAttendanceModal";
+import { AddEduGroupWizardModal } from "@/components/wizards/AddEduGroupWizardModal";
 import type { EduGroupItem, Student, GroupItem } from "@/types";
 
 export default function AdminEduGroupsPage() {
@@ -46,13 +43,14 @@ export default function AdminEduGroupsPage() {
   const [loadingDetails, setLoadingDetails] = useState(false);
 
   // Modals
+  const [showCreateWizard, setShowCreateWizard] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [editingGroup, setEditingGroup] = useState<EduGroupItem | null>(null);
   const [showStudentPicker, setShowStudentPicker] = useState(false);
   const [showAttendanceModal, setShowAttendanceModal] = useState(false);
   const [targetAttendanceGroup, setTargetAttendanceGroup] = useState<EduGroupItem | null>(null);
 
-  // Form State
+  // Form State (للتعديل فقط)
   const [formData, setFormData] = useState({
     name: "",
     teacherName: "",
@@ -323,10 +321,7 @@ export default function AdminEduGroupsPage() {
 
           <Button
             size="sm"
-            onClick={() => {
-              resetForm();
-              setShowCreateModal(true);
-            }}
+            onClick={() => setShowCreateWizard(true)}
             className="whitespace-nowrap flex items-center gap-2 text-xs sm:text-sm !min-h-10 px-4"
           >
             <Plus size={16} />
@@ -599,15 +594,22 @@ export default function AdminEduGroupsPage() {
         )}
       </div>
 
-      {/* Modal: Create or Edit Educational Group */}
-      {showCreateModal && (
+      {/* Wizard: إنشاء مجموعة تربوي جديدة خطوة بخطوة */}
+      <AddEduGroupWizardModal
+        isOpen={showCreateWizard}
+        onClose={() => setShowCreateWizard(false)}
+        onSuccess={() => {
+          loadEduGroups();
+        }}
+      />
+
+      {/* Modal: تعديل بيانات مجموعة تربوي قائمة */}
+      {showCreateModal && editingGroup && (
         <div className="modal-overlay">
           <div className="bg-surface rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-float border border-line animate-in fade-in zoom-in-95 duration-200">
-            <h3 className="font-black text-xl text-ink mb-1">
-              {editingGroup ? "تعديل بيانات مجموعة التربوي" : "إنشاء مجموعة تربوي جديدة"}
-            </h3>
+            <h3 className="font-black text-xl text-ink mb-1">تعديل بيانات مجموعة التربوي</h3>
             <p className="text-xs text-ink-mute mb-5 pb-4 border-b border-line">
-              أنشئ مجموعة التربوي وحدد معلمها ورقمها القومي ليتم توليد حساب دخول تلقائي له.
+              تعديل بيانات المجموعة والمعلم المسند إليها.
             </p>
 
             <form onSubmit={handleSubmitForm} className="space-y-4">
@@ -618,7 +620,7 @@ export default function AdminEduGroupsPage() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="field"
-                  placeholder="مثال: مجموعة التربوي - شباب (1) أو مرحلة الإعدادي"
+                  placeholder="مثال: مجموعة التربوي - شباب (1)"
                 />
               </div>
 
@@ -636,9 +638,8 @@ export default function AdminEduGroupsPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="field-label">الرقم القومي للمعلم (14 رقم) *</label>
+                  <label className="field-label">الرقم القومي للمعلم (14 رقم)</label>
                   <input
-                    required
                     pattern="\d{14}"
                     title="الرقم القومي يجب أن يتكون من 14 رقماً"
                     value={formData.nationalId}
@@ -662,12 +663,9 @@ export default function AdminEduGroupsPage() {
               </div>
 
               <div>
-                <label className="field-label">
-                  {editingGroup ? "كلمة المرور الجديدة (اتركها فارغة للإبقاء)" : "كلمة المرور للدخول *"}
-                </label>
+                <label className="field-label">كلمة المرور الجديدة (اتركها فارغة للإبقاء)</label>
                 <input
                   type="password"
-                  required={!editingGroup}
                   minLength={6}
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -676,23 +674,12 @@ export default function AdminEduGroupsPage() {
                 />
               </div>
 
-              {!editingGroup && (
-                <div className="p-3 bg-brand-soft/50 rounded-2xl border border-brand-soft/60 text-xs text-brand-ink/90 leading-relaxed flex items-start gap-2">
-                  <ShieldCheck size={18} className="text-brand shrink-0 mt-0.5" />
-                  <span>
-                    سيتم تلقائياً توليد <strong>اسم مستخدم (Username)</strong> باللغة الإنجليزية بناءً على
-                    اسم المعلم، وسيقوم المعلم بالدخول به عبر صفحة تسجيل الدخول العادية لاختيار الطلاب
-                    وتسجيل الحضور.
-                  </span>
-                </div>
-              )}
-
               <div className="flex justify-end gap-3 pt-4 border-t border-line">
                 <Button type="button" variant="outline" onClick={() => setShowCreateModal(false)}>
                   إلغاء
                 </Button>
                 <Button type="submit" loading={formLoading}>
-                  {editingGroup ? "حفظ التعديلات" : "إنشاء المجموعة والمعلم"}
+                  حفظ التعديلات
                 </Button>
               </div>
             </form>

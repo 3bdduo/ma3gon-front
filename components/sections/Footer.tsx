@@ -48,15 +48,31 @@ export function Footer() {
         </Reveal>
 
         <Reveal delay={0.16}>
-          <p className="font-bold mb-4 text-on-deep text-lg">تواصل معنا</p>
-          <ul className="space-y-3.5 text-sm text-on-deep-soft">
+          <p className="font-bold mb-4 text-on-deep text-lg">فروعنا والتواصل</p>
+          <ul className="space-y-3 text-sm text-on-deep-soft">
             <li className="flex items-center gap-2.5">
               <Phone size={16} className="text-gold shrink-0" />
-              <span dir="ltr">01119838926</span>
+              <a
+                href="https://api.whatsapp.com/send?phone=201110411408"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold transition-colors font-mono font-bold"
+                dir="ltr"
+              >
+                01110411408
+              </a>
             </li>
-            <li className="flex items-center gap-2.5">
-              <MapPin size={16} className="text-gold shrink-0" />
-              بني سويف - مركز سمسطا - قرية دشطوط - عزبة معجون
+            <li className="flex items-start gap-2.5">
+              <MapPin size={16} className="text-gold shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold text-on-deep">مصر — بني سويف — مركز إهناسيا</p>
+                <p className="text-xs text-on-deep-soft/80 mt-0.5">
+                  ٤ فروع: قرية النويرة (٣ فروع) + مدينة إهناسيا (فرع)
+                </p>
+                <Link href="/contact" className="text-xs text-gold underline underline-offset-4 mt-1 inline-block hover:brightness-110">
+                  عرض تفاصيل العناوين
+                </Link>
+              </div>
             </li>
           </ul>
         </Reveal>
@@ -66,7 +82,7 @@ export function Footer() {
 
       <div className="relative border-t border-deep-line py-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
         <Container className="text-center text-xs text-on-deep-soft">
-          © {new Date().getFullYear()} مدرسة القرءان الكريم بقرية معجون — جميع الحقوق محفوظة
+          © {new Date().getFullYear()} مدرسة القرءان الكريم التابعة لجميعة شباب المستقبل — جميع الحقوق محفوظة
         </Container>
       </div>
     </footer>

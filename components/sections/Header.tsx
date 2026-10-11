@@ -73,26 +73,26 @@ export function Header() {
             : "bg-bg/80 border-transparent shadow-none"
         }`}
       >
-        <Container className="flex items-center justify-between gap-3 h-16 sm:h-20">
-          {/* اللوجو — بيفتح مودال معلومات المدرسة */}
+        <Container className="flex items-center justify-between gap-2 lg:gap-4 h-18 sm:h-20">
+          {/* لوجو مدرسة القرءان الكريم ع اليمين (كبير وبارز — والضغط عليه يفتح تفاصيل وشعار الجمعية والمدرسة) */}
           <button
             onClick={() => setLogoModal(true)}
-            className="group shrink-0 min-w-0 rounded-2xl focus-visible:outline-offset-4"
-            aria-label="معلومات المدرسة"
+            className="group shrink-0 min-w-0 rounded-2xl focus-visible:outline-offset-4 cursor-pointer text-start"
+            aria-label="معلومات المدرسة والجمعية"
             suppressHydrationWarning
           >
-            <Logo size="md" />
+            <Logo size="md" showAssociation={false} />
           </button>
 
-          {/* قائمة الديسكتوب */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1" aria-label="التنقل الرئيسي">
+          {/* قائمة الديسكتوب (كل الروابط على سطر واحد بدون أي نزول) */}
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 shrink-0" aria-label="التنقل الرئيسي">
             {links.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-3.5 xl:px-4 py-2 rounded-full text-sm font-bold transition-colors duration-200 ${
+                  className={`relative px-2.5 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold transition-colors duration-200 whitespace-nowrap shrink-0 ${
                     active ? "text-on-brand" : "text-ink-soft hover:text-brand-ink hover:bg-brand-soft"
                   }`}
                 >
@@ -109,21 +109,21 @@ export function Header() {
             })}
           </nav>
 
-          {/* أزرار الديسكتوب */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* أزرار الديسكتوب على سطر واحد تماماً ومريحة */}
+          <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 shrink-0">
             <ThemeToggle />
             {user ? (
-              <ButtonLink href={`/dashboard/${user.role}`} size="sm">
-                <LayoutDashboard size={16} />
+              <ButtonLink href={`/dashboard/${user.role}`} size="sm" className="whitespace-nowrap shrink-0">
+                <LayoutDashboard size={15} />
                 لوحة التحكم
               </ButtonLink>
             ) : (
               <>
-                <ButtonLink href="/login" variant="outline" size="sm">
-                  <LogIn size={16} />
+                <ButtonLink href="/login" variant="outline" size="sm" className="whitespace-nowrap shrink-0">
+                  <LogIn size={15} />
                   تسجيل الدخول
                 </ButtonLink>
-                <ButtonLink href="/register" size="sm">
+                <ButtonLink href="/register" size="sm" className="whitespace-nowrap shrink-0">
                   سجّل الآن
                 </ButtonLink>
               </>
@@ -131,10 +131,10 @@ export function Header() {
           </div>
 
           {/* موبايل / تابلت: زر المود + البرجر */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2 shrink-0">
             <ThemeToggle />
             <button
-              className="relative h-11 w-11 grid place-items-center text-ink rounded-2xl bg-surface border border-line sh-soft active:scale-90 transition-transform duration-150"
+              className="relative h-10 w-10 sm:h-11 sm:w-11 grid place-items-center text-ink rounded-2xl bg-surface border border-line sh-soft active:scale-90 transition-transform duration-150 cursor-pointer"
               onClick={() => setOpen((o) => !o)}
               aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
               aria-expanded={open}
@@ -160,56 +160,65 @@ export function Header() {
           </div>
         </Container>
 
-        {/* قائمة الموبايل — CSS Grid بدل ما إن الـ JS يقيس الـ height في كل فريم (أخف وأسرع على الموبايل) */}
-        <nav
-          aria-label="قائمة الموبايل"
-          className={`lg:hidden grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-          }`}
-        >
-          <div className="overflow-hidden">
-            <div
-              inert={!open}
-              className={`border-t border-line bg-surface/98 transition-opacity duration-200 ${
-                open ? "opacity-100 delay-100" : "opacity-0"
-              }`}
-            >
-              <Container className="flex flex-col gap-1.5 py-4 max-h-[calc(100dvh-5rem)] overflow-y-auto">
-                {links.map((link) => {
-                  const active = isActive(link.href);
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={`flex items-center min-h-12 px-4 rounded-2xl text-base font-bold transition-colors duration-150 active:scale-[0.98] ${
-                        active
-                          ? "bg-brand text-on-brand sh-brand"
-                          : "text-ink hover:bg-brand-soft"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
+        {/* قائمة الموبايل المنسدلة */}
+        {open && (
+          <m.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden border-t border-line bg-surface/98 backdrop-blur-xl px-4 py-5 space-y-3"
+          >
+            <nav className="flex flex-col gap-1">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-colors ${
+                    isActive(link.href) ? "bg-brand text-on-brand" : "text-ink hover:bg-bg-alt"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
 
-                <div className="flex flex-col gap-2.5 mt-3 pt-4 border-t border-line pb-[env(safe-area-inset-bottom)]">
-                  {user ? (
-                    <ButtonLink href={`/dashboard/${user.role}`}>لوحة التحكم</ButtonLink>
-                  ) : (
-                    <>
-                      <ButtonLink href="/login" variant="outline">
-                        تسجيل الدخول
-                      </ButtonLink>
-                      <ButtonLink href="/register">سجّل الآن</ButtonLink>
-                    </>
-                  )}
-                </div>
-              </Container>
+            <div className="pt-3 border-t border-line flex flex-col gap-2">
+              {user ? (
+                <ButtonLink
+                  href={`/dashboard/${user.role}`}
+                  onClick={() => setOpen(false)}
+                  className="w-full justify-center"
+                >
+                  <LayoutDashboard size={16} />
+                  لوحة التحكم
+                </ButtonLink>
+              ) : (
+                <>
+                  <ButtonLink
+                    href="/login"
+                    variant="outline"
+                    onClick={() => setOpen(false)}
+                    className="w-full justify-center"
+                  >
+                    <LogIn size={16} />
+                    تسجيل الدخول
+                  </ButtonLink>
+                  <ButtonLink
+                    href="/register"
+                    onClick={() => setOpen(false)}
+                    className="w-full justify-center"
+                  >
+                    سجّل الآن
+                  </ButtonLink>
+                </>
+              )}
             </div>
-          </div>
-        </nav>
+          </m.div>
+        )}
       </header>
 
+      {/* المودال الشامل لمعلومات المدرسة وجمعية شباب المستقبل */}
       <LogoModal open={logoModal} onClose={() => setLogoModal(false)} />
     </>
   );

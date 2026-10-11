@@ -158,23 +158,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div aria-hidden="true" className="absolute inset-0 pattern-star opacity-[0.03]" />
           </div>
 
-          <div className="relative p-6 border-b border-deep-line flex items-center justify-between min-h-[104px]">
+          <div className="relative p-5 border-b border-deep-line flex items-center justify-center min-h-[110px]">
             {!collapsed ? (
-              <div className="flex flex-col min-w-0 pr-1 py-1">
-                {/* شيلنا overflow-hidden اللي كانت بتقص اللوجو */}
-                <Logo size="md" tone="onDeep" className="py-1" />
-                <m.p 
+              <div className="flex flex-col items-center text-center w-full min-w-0">
+                <Logo size="md" layout="vertical" tone="onDeep" />
+                <m.div 
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-xs text-on-deep-soft flex items-center gap-1.5 mt-3 whitespace-nowrap"
+                  className="inline-flex items-center gap-1.5 mt-2.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-on-deep-soft whitespace-nowrap"
                 >
-                  <meta.icon size={14} className="text-gold" /> لوحة {meta.label}
-                </m.p>
+                  <meta.icon size={13} className="text-gold" /> لوحة {meta.label}
+                </m.div>
               </div>
             ) : (
               <div className="w-full flex justify-center py-1">
-                <Logo size="sm" showText={false} tone="onDeep" />
+                <Logo size="sm" showText={false} showAssociation={false} tone="onDeep" />
               </div>
             )}
             

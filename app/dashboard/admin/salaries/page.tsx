@@ -62,7 +62,7 @@ export default function AdminSalariesPage() {
   // نافذة تحديد / تعديل الراتب (نظام الخطوات المتسلسلة)
   const [modalOpen, setModalOpen] = useState(false);
   const [modalLoading, setModalLoading] = useState(false);
-  const [salaryStep, setSalaryStep] = useState<1 | 2 | 3 | 4>(1);
+  const [salaryStep, setSalaryStep] = useState<1 | 2 | 3 | 4 | 5>(1);
   const [selectedTeacherUsername, setSelectedTeacherUsername] = useState("");
   const [baseSalaryInput, setBaseSalaryInput] = useState<number | string>(0);
   const [incentiveAmountInput, setIncentiveAmountInput] = useState<number | string>(0);
@@ -677,12 +677,14 @@ export default function AdminSalariesPage() {
                 <div>
                   <h3 className="font-extrabold text-ink text-base sm:text-lg">
                     {salaryStep === 1
-                      ? "الخطوة 1: تحديد الراتب الأساسي"
+                      ? "الخطوة 1: اختيار المعلم"
                       : salaryStep === 2
-                      ? "الخطوة 2: الحوافز والمكافآت"
+                      ? "الخطوة 2: تحديد الراتب الأساسي"
                       : salaryStep === 3
-                      ? "الخطوة 3: الخصومات والاستقطاعات"
-                      : "الخطوة 4: مراجعة واعتماد الراتب"}
+                      ? "الخطوة 3: الحوافز والمكافآت"
+                      : salaryStep === 4
+                      ? "الخطوة 4: الخصومات والاستقطاعات"
+                      : "الخطوة 5: مراجعة واعتماد الراتب"}
                   </h3>
                   <p className="text-xs text-ink-mute">
                     شهر {selectedMonth} {selectedTeacherObj ? `• للمعلم ${selectedTeacherObj.full_name || selectedTeacherObj.username}` : ""}
@@ -700,17 +702,21 @@ export default function AdminSalariesPage() {
 
             {/* Stepper Navigation Bar */}
             <div className="px-3 sm:px-5 py-3 border-b border-line bg-bg-alt/20">
-              <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
+              <div className="grid grid-cols-5 gap-1 sm:gap-1.5">
                 {[
-                  { num: 1, title: "الأساسي", icon: Banknote },
-                  { num: 2, title: "الحوافز (+)", icon: TrendingUp },
-                  { num: 3, title: "الخصومات (-)", icon: TrendingDown },
-                  { num: 4, title: "المراجعة (✓)", icon: CheckCircle2 },
+                  { num: 1, title: "المعلم", icon: User },
+                  { num: 2, title: "الأساسي", icon: Banknote },
+                  { num: 3, title: "الحوافز (+)", icon: TrendingUp },
+                  { num: 4, title: "الخصومات (-)", icon: TrendingDown },
+                  { num: 5, title: "المراجعة (✓)", icon: CheckCircle2 },
                 ].map((step) => {
                   const Icon = step.icon;
                   const isActive = salaryStep === step.num;
                   const isDone = salaryStep > step.num;
-                  const canClick = isDone || (step.num === 2 && liveBase > 0) || (step.num === 3 && liveBase > 0) || (step.num === 4 && liveBase > 0);
+                  const canClick =
+                    isDone ||
+                    (step.num === 2 && !!selectedTeacherUsername) ||
+                    (step.num >= 3 && liveBase > 0);
 
                   return (
                     <button
@@ -720,7 +726,7 @@ export default function AdminSalariesPage() {
                       onClick={() => {
                         if (canClick) setSalaryStep(step.num as any);
                       }}
-                      className={`flex items-center gap-1.5 p-2 rounded-xl text-right transition-all border ${
+                      className={`flex items-center gap-1 p-2 rounded-xl text-right transition-all border ${
                         isActive
                           ? "bg-brand/10 border-brand text-brand-ink font-bold shadow-xs"
                           : isDone
@@ -729,18 +735,18 @@ export default function AdminSalariesPage() {
                       }`}
                     >
                       <div
-                        className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold ${
+                        className={`w-5 h-5 rounded-lg flex items-center justify-center shrink-0 text-[10px] font-bold ${
                           isActive
                             ? "bg-brand text-on-brand shadow-xs"
                             : isDone
-                            ? "bg-brand-soft/500/15 text-brand-ink dark:text-brand-strong"
+                            ? "bg-brand-soft/50 text-brand-ink dark:text-brand-strong"
                             : "bg-bg-alt text-ink-mute"
                         }`}
                       >
-                        {isDone ? <Check size={13} strokeWidth={3} /> : step.num}
+                        {isDone ? <Check size={11} strokeWidth={3} /> : step.num}
                       </div>
-                      <div className="min-w-0">
-                        <p className="text-[11px] truncate leading-tight font-bold">{step.title}</p>
+                      <div className="min-w-0 hidden sm:block">
+                        <p className="text-[10px] truncate leading-tight font-bold">{step.title}</p>
                       </div>
                     </button>
                   );
@@ -753,18 +759,19 @@ export default function AdminSalariesPage() {
               {/* ============================================================== */}
               {/* الخطوة 1: اختيار المعلم والراتب الأساسي */}
               {/* ============================================================== */}
+              {/* ── الخطوة 1: اختيار المعلم فقط ── */}
               {salaryStep === 1 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-3 duration-200">
-                  {/* اختيار المعلم */}
                   <div>
-                    <label className="block text-xs font-bold text-ink mb-1.5">
+                    <label className="block text-sm font-bold text-ink mb-2 flex items-center gap-1.5">
+                      <User className="w-4 h-4 text-brand-ink" />
                       اختيار المعلم المستحق للراتب <span className="text-rose-500">*</span>
                     </label>
                     <select
                       value={selectedTeacherUsername}
                       onChange={(e) => handleTeacherSelectChange(e.target.value)}
-                      className="field text-sm font-bold w-full"
-                      required
+                      className="field text-base font-bold w-full py-3.5"
+                      autoFocus
                     >
                       <option value="" disabled>
                         -- اختر معلماً من القائمة --
@@ -777,21 +784,20 @@ export default function AdminSalariesPage() {
                     </select>
                   </div>
 
-                  {/* بطاقة معلومات المعلم المختار */}
                   {selectedTeacherObj && (
-                    <div className="p-3 bg-bg-alt/60 rounded-2xl border border-line text-xs flex flex-wrap items-center justify-between gap-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-xl bg-brand-soft text-brand-ink flex items-center justify-center font-bold">
-                          <User size={16} />
+                    <div className="p-4 bg-brand-soft/40 rounded-2xl border border-brand/25 text-xs flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-10 h-10 rounded-xl bg-brand-soft text-brand-ink flex items-center justify-center font-bold">
+                          <User size={20} />
                         </div>
                         <div>
-                          <strong className="text-ink block text-xs">{selectedTeacherObj.full_name || selectedTeacherObj.username}</strong>
+                          <strong className="text-ink block text-sm">{selectedTeacherObj.full_name || selectedTeacherObj.username}</strong>
+                          <span className="text-ink-mute text-[11px] font-mono">@{selectedTeacherObj.username}</span>
                         </div>
                       </div>
-
                       {selectedTeacherObj.base_salary && selectedTeacherObj.base_salary > 0 ? (
                         <span className="bg-brand-soft text-brand-ink px-2.5 py-1 rounded-lg font-mono font-bold text-[11px]">
-                          الأساسي المسجل: {selectedTeacherObj.base_salary.toLocaleString()} ج.م
+                          آخر راتب أساسي: {selectedTeacherObj.base_salary.toLocaleString()} ج.م
                         </span>
                       ) : (
                         <span className="text-ink-mute text-[11px]">لم يُسجل راتب أساسي سابق</span>
@@ -799,10 +805,52 @@ export default function AdminSalariesPage() {
                     </div>
                   )}
 
-                  {/* الراتب الأساسي للشهر */}
+                  <div className="flex items-center justify-between pt-3 border-t border-line">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setModalOpen(false)}
+                      className="!min-h-10 px-4 text-xs font-bold"
+                    >
+                      إلغاء
+                    </Button>
+                    <Button
+                      type="button"
+                      size="sm"
+                      disabled={!selectedTeacherUsername}
+                      onClick={() => setSalaryStep(2)}
+                      className="!min-h-10 px-5 text-xs font-bold flex items-center gap-2"
+                    >
+                      <span>المتابعة لتحديد الراتب</span>
+                      <ArrowLeft size={15} />
+                    </Button>
+                  </div>
+                </div>
+              )}
+
+              {/* ── الخطوة 2: الراتب الأساسي فقط ── */}
+              {salaryStep === 2 && (
+                <div className="space-y-4 animate-in fade-in slide-in-from-right-3 duration-200">
+                  {selectedTeacherObj && (
+                    <div className="p-3 bg-bg-alt/60 rounded-2xl border border-line text-xs flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-xl bg-brand-soft text-brand-ink flex items-center justify-center font-bold">
+                          <User size={16} />
+                        </div>
+                        <strong className="text-ink text-xs">{selectedTeacherObj.full_name || selectedTeacherObj.username}</strong>
+                      </div>
+                      {selectedTeacherObj.base_salary && selectedTeacherObj.base_salary > 0 && (
+                        <span className="bg-brand-soft text-brand-ink px-2.5 py-1 rounded-lg font-mono font-bold text-[11px]">
+                          آخر أساسي: {selectedTeacherObj.base_salary.toLocaleString()} ج.م
+                        </span>
+                      )}
+                    </div>
+                  )}
+
                   <div className="bg-surface p-4 sm:p-5 rounded-2xl border-2 border-brand/30 shadow-xs space-y-3">
                     <div className="flex items-center justify-between">
-                      <label className="text-xs font-bold text-ink flex items-center gap-1.5">
+                      <label className="text-sm font-bold text-ink flex items-center gap-1.5">
                         <Banknote className="w-4 h-4 text-brand" />
                         الراتب الأساسي لشهر {selectedMonth} <span className="text-rose-500">*</span>
                       </label>
@@ -826,7 +874,6 @@ export default function AdminSalariesPage() {
                       </span>
                     </div>
 
-                    {/* اختصارات مبالغ شائعة سريعة */}
                     <div className="pt-1">
                       <p className="text-[11px] text-ink-mute mb-1.5 font-bold">مبالغ سريعة بنقرة واحدة:</p>
                       <div className="flex flex-wrap gap-1.5">
@@ -848,28 +895,27 @@ export default function AdminSalariesPage() {
                     </div>
                   </div>
 
-                  {/* أزرار الخطوة 1 */}
                   <div className="flex items-center justify-between pt-3 border-t border-line">
                     <Button
                       type="button"
                       variant="outline"
                       size="sm"
-                      onClick={() => setModalOpen(false)}
-                      className="!min-h-10 px-4 text-xs font-bold"
+                      onClick={() => setSalaryStep(1)}
+                      className="!min-h-10 px-4 text-xs font-bold flex items-center gap-1.5"
                     >
-                      إلغاء
+                      <ArrowRight size={15} />
+                      <span>السابق (المعلم)</span>
                     </Button>
-
                     <Button
                       type="button"
                       size="sm"
-                      disabled={liveBase <= 0 || !selectedTeacherUsername}
+                      disabled={liveBase <= 0}
                       onClick={() => {
                         if (liveBase <= 0) {
                           showToast("يرجى إدخال الراتب الأساسي (أكبر من 0)", "error");
                           return;
                         }
-                        setSalaryStep(2);
+                        setSalaryStep(3);
                       }}
                       className="!min-h-10 px-5 text-xs font-bold flex items-center gap-2"
                     >
@@ -883,7 +929,7 @@ export default function AdminSalariesPage() {
               {/* ============================================================== */}
               {/* الخطوة 2: الحوافز والمكافآت (تُضاف للراتب) */}
               {/* ============================================================== */}
-              {salaryStep === 2 && (
+              {salaryStep === 3 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-3 duration-200">
                   {/* بطاقة توجيهية */}
                   <div className="p-3.5 bg-brand-soft/40 rounded-2xl border border-brand/20 text-xs text-brand-ink leading-relaxed flex items-start gap-2.5">
@@ -1001,7 +1047,7 @@ export default function AdminSalariesPage() {
                       type="button"
                       variant="outline"
                       size="sm"
-                      onClick={() => setSalaryStep(1)}
+                      onClick={() => setSalaryStep(2)}
                       className="!min-h-10 px-4 text-xs font-bold flex items-center gap-1.5"
                     >
                       <ArrowRight size={15} />
@@ -1011,7 +1057,7 @@ export default function AdminSalariesPage() {
                     <Button
                       type="button"
                       size="sm"
-                      onClick={() => setSalaryStep(3)}
+                      onClick={() => setSalaryStep(4)}
                       className="!min-h-10 px-5 text-xs font-bold flex items-center gap-2"
                     >
                       <span>{liveIncentive > 0 ? "المتابعة للخصومات" : "تخطي بدون حوافز"}</span>
@@ -1024,7 +1070,7 @@ export default function AdminSalariesPage() {
               {/* ============================================================== */}
               {/* الخطوة 3: الخصومات والاستقطاعات (تُخصم من الراتب) */}
               {/* ============================================================== */}
-              {salaryStep === 3 && (
+              {salaryStep === 4 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-3 duration-200">
                   {/* بطاقة توجيهية */}
                   <div className="p-3.5 bg-rose-500/10 rounded-2xl border border-rose-500/20 text-xs text-rose-800 dark:text-rose-300 leading-relaxed flex items-start gap-2.5">
@@ -1142,7 +1188,7 @@ export default function AdminSalariesPage() {
                       type="button"
                       variant="outline"
                       size="sm"
-                      onClick={() => setSalaryStep(2)}
+                      onClick={() => setSalaryStep(3)}
                       className="!min-h-10 px-4 text-xs font-bold flex items-center gap-1.5"
                     >
                       <ArrowRight size={15} />
@@ -1152,7 +1198,7 @@ export default function AdminSalariesPage() {
                     <Button
                       type="button"
                       size="sm"
-                      onClick={() => setSalaryStep(4)}
+                      onClick={() => setSalaryStep(5)}
                       className="!min-h-10 px-5 text-xs font-bold flex items-center gap-2"
                     >
                       <span>{liveDeduction > 0 ? "المتابعة للمراجعة والاعتماد" : "تخطي بدون خصم"}</span>
@@ -1165,7 +1211,7 @@ export default function AdminSalariesPage() {
               {/* ============================================================== */}
               {/* الخطوة 4: المراجعة النهائية وتأكيد الصرف */}
               {/* ============================================================== */}
-              {salaryStep === 4 && (
+              {salaryStep === 5 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-3 duration-200">
                   {/* كشف الحساب والنتيجة النهائية التلقائية */}
                   <div className="rounded-2xl border-2 border-brand/40 bg-gradient-to-br from-brand/10 via-surface to-surface overflow-hidden shadow-sm">
@@ -1291,7 +1337,7 @@ export default function AdminSalariesPage() {
                       type="button"
                       variant="outline"
                       size="sm"
-                      onClick={() => setSalaryStep(3)}
+                      onClick={() => setSalaryStep(4)}
                       className="!min-h-10 px-4 text-xs font-bold flex items-center gap-1.5"
                     >
                       <ArrowRight size={15} />
