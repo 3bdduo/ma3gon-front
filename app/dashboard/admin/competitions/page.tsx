@@ -463,7 +463,7 @@ export default function AdminCompetitionsPage() {
                 <div className="card !rounded-2xl p-12 text-center text-ink-mute">
                   <Trophy size={40} className="mx-auto text-ink-mute/50 mb-3" />
                   <p className="font-bold text-lg">لا توجد مسابقات بعد</p>
-                  <p className="text-sm mt-1">اضغط "مسابقة قرآن جديدة" لإنشاء أول مسابقة</p>
+                  <p className="text-sm mt-1">اضغط &quot;مسابقة قرآن جديدة&quot; لإنشاء أول مسابقة</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -610,7 +610,7 @@ export default function AdminCompetitionsPage() {
                 <div className="card !rounded-2xl p-12 text-center text-ink-mute">
                   <GraduationCap size={40} className="mx-auto text-ink-mute/50 mb-3" />
                   <p className="font-bold text-lg">لا توجد مسابقات لهذه المجموعة</p>
-                  <p className="text-xs mt-1">اضغط "مسابقة تربوية جديدة" لإنشاء مسابقة</p>
+                  <p className="text-xs mt-1">اضغط &quot;مسابقة تربوية جديدة&quot; لإنشاء مسابقة</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
