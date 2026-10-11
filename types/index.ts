@@ -152,10 +152,34 @@ export interface CompetitionItem {
   name: string;
   description?: string;
   year: string;
+  type?: "quran" | "edu";
+  eduGroupId?: string | null;
+  maxScore?: number;
   participantsCount?: number;
   resultsPublished?: boolean;
-  participants?: string[];
+  participants?: { studentId: string; studentName: string; nationalId?: string; groupId?: string; groupName?: string }[];
   results?: { student_id: string; score: number; rank: number; notes?: string }[];
+}
+
+export interface StudentCompetitionResults {
+  studentName: string;
+  nationalId: string;
+  competitions: {
+    type: "quran" | "edu";
+    competitionId: string;
+    competitionName: string;
+    year: string;
+    maxScore: number;
+    score: number;
+    rank: number;
+  }[];
+  exams: {
+    examId: string;
+    name: string;
+    maxScore: number;
+    score: number;
+    date: string;
+  }[];
 }
 
 export interface TeacherSalaryConfig {

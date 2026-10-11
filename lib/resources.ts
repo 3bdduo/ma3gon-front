@@ -12,6 +12,7 @@ import {
   AttendanceGroupRecord,
   ExamItem,
   CompetitionItem,
+  StudentCompetitionResults,
   TeacherSalaryConfig,
   SalaryMonthSummary,
   SchoolSettings,
@@ -19,6 +20,7 @@ import {
   ContactMessageItem,
   MemorizationEntry,
 } from "@/types";
+
 
 // ============================================================================
 // طبقة نداءات كل موديول من الباك إند — تغطية شاملة 100% لكل مسارات الـ API (21 Module)
@@ -244,10 +246,13 @@ export const examsApi = {
 // 10. المسابقات
 export const competitionsApi = {
   list: () => api.get<CompetitionItem[]>("/competitions", undefined, true),
+  listByType: (type: "quran" | "edu") => api.get<CompetitionItem[]>("/competitions", { type }, true),
   byId: (id: string) => api.get<CompetitionItem>(`/competitions/${id}`, undefined, true),
-  create: (body: { name: string; description?: string; year: string }) =>
-    api.post<CompetitionItem>("/competitions", body, true),
-  update: (id: string, body: { name?: string; description?: string; year?: string }) =>
+  create: (body: {
+    name: string; description?: string; year: string;
+    maxScore?: number; type?: "quran" | "edu"; eduGroupId?: string;
+  }) => api.post<CompetitionItem>("/competitions", body, true),
+  update: (id: string, body: { name?: string; description?: string; year?: string; maxScore?: number }) =>
     api.put<CompetitionItem>(`/competitions/${id}`, body, true),
   remove: (id: string) => api.delete(`/competitions/${id}`, true),
   addParticipant: (competitionId: string, studentId: string) =>
@@ -258,6 +263,8 @@ export const competitionsApi = {
     competitionId: string,
     results: { studentId: string; score: number; rank?: number; notes?: string }[]
   ) => api.put<{ message: string; results: any[] }>(`/competitions/${competitionId}/results`, { results }, true),
+  studentResults: (nationalId: string) =>
+    api.get<StudentCompetitionResults>(`/competitions/student-results/${nationalId}`),
 };
 
 // 11. الرواتب
