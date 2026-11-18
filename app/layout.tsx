@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import { Tajawal, Aref_Ruqaa } from "next/font/google";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
@@ -34,7 +34,7 @@ const ruqaa = Aref_Ruqaa({
   display: "swap",
 });
 
-const SITE_TITLE = "مدرسة القرءان الكريم التابعة لجميعة شباب المستقبل";
+const SITE_TITLE = "مدرسة القرءان الكريم بقرية معجون";
 const SITE_DESCRIPTION =
   "منصة تعليمية شاملة لتحفيظ القرآن الكريم والتفسير والتجويد والعلوم الشرعية، مع متابعة مستمرة لتقدم الطلاب.";
 

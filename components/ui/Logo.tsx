@@ -3,20 +3,17 @@ import clsx from "clsx";
 
 const sizes = {
   sm: {
-    quranBadge: "h-10 w-18",
-    assocBadge: "h-10 w-10",
+    quranBadge: "h-10 w-10",
     title: "text-sm",
     sub: "text-[11px]",
   },
   md: {
-    quranBadge: "h-13 sm:h-15 w-24 sm:w-28",
-    assocBadge: "h-12 sm:h-14 w-12 sm:w-14",
+    quranBadge: "h-14 w-14 sm:h-16 sm:w-16",
     title: "text-base sm:text-xl",
     sub: "text-xs sm:text-xs",
   },
   lg: {
-    quranBadge: "h-20 sm:h-24 w-36 sm:w-44",
-    assocBadge: "h-18 sm:h-22 w-18 sm:w-22",
+    quranBadge: "h-24 w-24 sm:h-28 sm:w-28",
     title: "text-2xl sm:text-3xl",
     sub: "text-sm sm:text-base",
   },
@@ -33,46 +30,7 @@ interface LogoProps {
 }
 
 /**
- * الشعار الدائري لجمعية شباب المستقبل (مستقل للاستخدام على يسار الهيدر أو في أي مكان مخصص)
- */
-export function AssociationLogoBadge({
-  size = "md",
-  className,
-  onClick,
-}: {
-  size?: keyof typeof sizes;
-  className?: string;
-  onClick?: () => void;
-}) {
-  const s = sizes[size];
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={clsx(
-        "relative shrink-0 rounded-full overflow-hidden bg-white p-1 shadow-md border-2 border-emerald-500/60 ring-2 ring-emerald-500/15 hover:ring-emerald-500/40 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group",
-        s.assocBadge,
-        className,
-      )}
-      title="جمعية شباب المستقبل للتنمية الشاملة (المشهرة برقم 733 لسنة 2005)"
-      aria-label="شعار جمعية شباب المستقبل"
-      suppressHydrationWarning
-    >
-      <Image
-        src="/association-logo.png"
-        alt="شعار جمعية شباب المستقبل"
-        fill
-        sizes="120px"
-        className="object-contain p-0.5 group-hover:rotate-3 transition-transform"
-        priority
-      />
-    </button>
-  );
-}
-
-/**
- * اللوجو الموحّد:
- * يعرض الشعار الأساسي لمدرسة القرءان الكريم (+ شعار الجمعية اختياريًا)
+ * اللوجو الموحّد لمدرسة القرءان الكريم بقرية معجون
  * يدعم التنسيق الأفقي (للهيدر والفوتر) والتنسيق الرأسي (للشريط الجانبي وصفحة الدخول)
  */
 export function Logo({
@@ -94,49 +52,26 @@ export function Logo({
         className,
       )}
     >
-      {/* حاوية الشعارين معاً */}
+      {/* الشعار الأساسي: مدرسة القرءان الكريم بقرية معجون */}
       <span className="flex items-center justify-center gap-2 shrink-0">
-        {/* 1. الشعار الأساسي: مدرسة القرءان الكريم (بحجم كبير وبارز) */}
         <span
           className={clsx(
-            "relative shrink-0 rounded-2xl overflow-hidden bg-white p-1.5 shadow-md border-2 border-gold/60 ring-2 ring-gold/15 flex items-center justify-center",
-            tone === "onDeep" ? "ring-white/15" : "shadow-brand/5",
+            "relative shrink-0 rounded-full overflow-hidden bg-transparent border-2 border-gold/60 ring-2 ring-gold/15 flex items-center justify-center",
+            tone === "onDeep" ? "ring-white/15" : "",
             "transition-transform duration-200 group-hover:scale-105",
             s.quranBadge,
           )}
-          title="مدرسة القرءان الكريم"
+          title="مدرسة القرءان الكريم بقرية معجون"
         >
           <Image
             src="/quran-school-logo.png"
-            alt="شعار مدرسة القرءان الكريم"
+            alt="شعار مدرسة القرءان الكريم بقرية معجون"
             fill
             sizes="160px"
-            className="object-contain p-0.5"
+            className="object-cover"
             priority
           />
         </span>
-
-        {/* 2. الشعار الثانوي: جمعية شباب المستقبل (إذا طُلب بجانبه مباشرة) */}
-        {showAssociation && (
-          <span
-            className={clsx(
-              "relative shrink-0 rounded-full overflow-hidden bg-white p-1 shadow-md border-2 border-emerald-500/60 ring-2 ring-emerald-500/15 flex items-center justify-center",
-              tone === "onDeep" ? "ring-white/15" : "shadow-emerald-900/5",
-              "transition-transform duration-200 group-hover:scale-105",
-              s.assocBadge,
-            )}
-            title="جمعية شباب المستقبل"
-          >
-            <Image
-              src="/association-logo.png"
-              alt="شعار جمعية شباب المستقبل"
-              fill
-              sizes="120px"
-              className="object-contain"
-              priority
-            />
-          </span>
-        )}
       </span>
 
       {/* النصوص المرافقة */}
@@ -164,10 +99,49 @@ export function Logo({
               tone === "onDeep" ? "text-gold" : "text-brand-ink",
             )}
           >
-            التابعة لجمعية شباب المستقبل
+            بقرية معجون
           </span>
         </span>
       )}
     </span>
+  );
+}
+
+/**
+ * شعار مدرسة القرءان (مستقل للاستخدام في أي مكان)
+ * @deprecated استخدم Logo بدلاً منه
+ */
+export function AssociationLogoBadge({
+  size = "md",
+  className,
+  onClick,
+}: {
+  size?: keyof typeof sizes;
+  className?: string;
+  onClick?: () => void;
+}) {
+  const s = sizes[size];
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={clsx(
+        "relative shrink-0 rounded-2xl overflow-hidden bg-white p-1.5 shadow-md border-2 border-gold/60 ring-2 ring-gold/15 hover:ring-gold/40 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group",
+        s.quranBadge,
+        className,
+      )}
+      title="مدرسة القرءان الكريم بقرية معجون"
+      aria-label="شعار مدرسة القرءان الكريم بقرية معجون"
+      suppressHydrationWarning
+    >
+      <Image
+        src="/quran-school-logo.png"
+        alt="شعار مدرسة القرءان الكريم بقرية معجون"
+        fill
+        sizes="120px"
+        className="object-contain p-0.5 group-hover:scale-105 transition-transform"
+        priority
+      />
+    </button>
   );
 }

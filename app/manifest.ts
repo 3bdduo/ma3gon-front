@@ -1,9 +1,9 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
 
 // بيخلي الموقع يتثبّت على الشاشة الرئيسية بنفس الشكل في أندرويد وآيفون
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "مدرسة القرءان الكريم التابعة لجميعة شباب المستقبل",
+    name: "مدرسة القرءان الكريم بقرية معجون",
     short_name: "مدرسة القرءان",
     description: "منصة تعليمية شاملة لتحفيظ القرآن الكريم وعلومه",
     lang: "ar",

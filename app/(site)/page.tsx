@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { Hero } from "@/components/sections/Hero";
 import { FeaturesSection } from "@/components/sections/FeaturesSection";
-import { CurriculumPreview } from "@/components/sections/CurriculumPreview";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { BlogPreview } from "@/components/sections/BlogPreview";
@@ -26,7 +25,6 @@ export default function HomePage() {
     <>
       <Hero />
       <FeaturesSection />
-      <CurriculumPreview />
       <StatsSection />
       <TestimonialsSection />
       <Suspense fallback={<SectionFallback />}>

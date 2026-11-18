@@ -1,7 +1,6 @@
 "use client";
 
 import { m } from "framer-motion";
-import { Sparkles, Award, HeartHandshake } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { IslamicDivider } from "@/components/ui/IslamicDivider";
@@ -12,9 +11,9 @@ const line1 = "نبني قلوبًا تنبضُ بنورِ القرآن".split("
 const line2 = "فصاحةً وخُلُقًا وإتقانًا".split(" ");
 
 const chips = [
-  { icon: Sparkles, label: "أثرٌ باقٍ وبناءٌ لشخصية قرآنية سوية" },
-  { icon: Award, label: "شيوخٌ مهرة بأسانيد متصلة وإتقان تام" },
-  { icon: HeartHandshake, label: "رعاية فردية وشراكة دائمة مع الأسرة" },
+  { label: "أثرٌ باقٍ وبناءٌ لشخصية قرآنية سوية" },
+  { label: "شيوخٌ مهرة بأسانيد متصلة وإتقان تام" },
+  { label: "رعاية فردية وشراكة دائمة مع الأسرة" },
 ];
 
 /** كلمات العنوان بتدخل واحدة ورا التانية بحركة ناعمة وسريعة. */
@@ -123,19 +122,16 @@ export function Hero() {
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.35 } } }}
           className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 max-w-4xl mx-auto mt-4"
         >
-          {chips.map(({ icon: Icon, label }) => (
+          {chips.map(({ label }) => (
             <m.div
               key={label}
               variants={{
                 hidden: { opacity: 0, y: 16, scale: 0.96 },
                 show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: EASE } },
               }}
-              className="card-interactive flex items-center gap-3 px-5 py-4"
+              className="card-interactive flex items-center justify-center px-5 py-4"
             >
-              <div className="h-11 w-11 shrink-0 rounded-full bg-brand-soft flex items-center justify-center text-brand-ink sh-soft">
-                <Icon size={21} />
-              </div>
-              <p className="text-sm font-bold text-ink text-start leading-snug">{label}</p>
+              <p className="text-sm font-bold text-ink text-center leading-snug">{label}</p>
             </m.div>
           ))}
         </m.div>

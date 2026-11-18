@@ -39,7 +39,7 @@ export function LogoModal({ open, onClose }: LogoModalProps) {
           onClick={onClose}
           role="dialog"
           aria-modal="true"
-          aria-label="معلومات المدرسة والجمعية"
+          aria-label="معلومات مدرسة القرءان الكريم بقرية معجون"
         >
           {/* الخلفية */}
           <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" />
@@ -61,52 +61,30 @@ export function LogoModal({ open, onClose }: LogoModalProps) {
               <X size={18} />
             </button>
 
-            {/* منطقة عرض الشعارين ببروز فائق */}
+            {/* منطقة عرض الشعار ببروز فائق */}
             <div className="relative overflow-hidden rounded-t-[2rem] bg-gradient-to-b from-brand/5 via-bg-alt to-surface px-6 pt-10 pb-8 border-b border-line">
               <div aria-hidden="true" className="absolute inset-0 pattern-star opacity-[0.10]" />
 
-              <div className="relative flex flex-col sm:flex-row items-center justify-center gap-5 z-10">
-                {/* 1. شعار مدرسة القرءان الكريم (الأساسي) */}
+              <div className="relative flex flex-col items-center justify-center gap-5 z-10">
+                {/* شعار مدرسة القرءان الكريم بقرية معجون */}
                 <div className="flex flex-col items-center">
                   <m.div
                     initial={{ scale: 0.9, y: 10 }}
                     animate={{ scale: 1, y: 0 }}
                     transition={{ type: "spring", stiffness: 120, damping: 14 }}
-                    className="relative w-52 h-28 sm:w-60 sm:h-32 rounded-2xl overflow-hidden bg-white p-2 border-2 border-gold/70 shadow-xl ring-4 ring-gold/15"
+                    className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-full overflow-hidden bg-white border-4 border-gold/70 shadow-2xl ring-4 ring-gold/20"
                   >
                     <Image
                       src="/quran-school-logo.png"
-                      alt="شعار مدرسة القرءان الكريم"
+                      alt="شعار مدرسة القرءان الكريم بقرية معجون"
                       fill
-                      sizes="240px"
-                      className="object-contain p-1 select-none"
+                      sizes="208px"
+                      className="object-contain select-none"
                       priority
                     />
                   </m.div>
                   <span className="mt-2 text-xs font-bold text-brand-ink bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">
                     الشعار الرسمي للمدرسة
-                  </span>
-                </div>
-
-                {/* 2. شعار جمعية شباب المستقبل (التابع لها) */}
-                <div className="flex flex-col items-center">
-                  <m.div
-                    initial={{ scale: 0.9, y: 10 }}
-                    animate={{ scale: 1, y: 0 }}
-                    transition={{ type: "spring", stiffness: 120, damping: 14, delay: 0.08 }}
-                    className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-white p-2 border-2 border-emerald-500/70 shadow-xl ring-4 ring-emerald-500/15"
-                  >
-                    <Image
-                      src="/association-logo.png"
-                      alt="شعار جمعية شباب المستقبل"
-                      fill
-                      sizes="140px"
-                      className="object-contain p-1 select-none"
-                      priority
-                    />
-                  </m.div>
-                  <span className="mt-2 text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
-                    جمعية شباب المستقبل
                   </span>
                 </div>
               </div>
@@ -117,41 +95,35 @@ export function LogoModal({ open, onClose }: LogoModalProps) {
               <h2 className="font-ruqaa text-2xl sm:text-3xl font-bold text-ink leading-[1.5] mb-1">
                 مدرسة القرءان الكريم
               </h2>
-              <p className="text-gold-ink text-sm sm:text-base font-bold mb-3">
-                التابعة لجمعية شباب المستقبل للتنمية الشاملة
+              <p className="text-gold-ink text-sm sm:text-base font-bold mb-4">
+                بقرية معجون
               </p>
-              <div className="inline-block bg-bg-alt border border-line text-xs font-bold text-ink-muted px-3 py-1.5 rounded-xl mb-4">
-                المشهرة برقم 733 لسنة 2005
-              </div>
 
               <p className="text-ink-soft text-sm leading-relaxed mb-5">
                 منهج تربوي وقرآني متكامل لتحفيظ كتاب الله الكريم وتعليم أحكام التجويد والعلوم الشرعية، بإشراف كوكبة من المعلمين والمعلمات المؤهلين.
               </p>
 
-              {/* فروع المدرسة الأربعة */}
+              {/* موقع المدرسة */}
               <div className="text-start bg-bg-alt/80 border border-line rounded-2xl p-3.5 mb-5 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-bold text-ink">
                   <MapPin size={15} className="text-brand shrink-0" />
-                  <span>فروع المدرسة (محافظة بني سويف — مركز إهناسيا):</span>
+                  <span>موقع المدرسة:</span>
                 </div>
-                <ul className="text-xs text-ink-soft space-y-1.5 pr-4 list-disc marker:text-brand font-medium">
-                  <li><strong className="text-ink">الفرع الأول:</strong> قرية النويرة — بجوار المدرسة الإعدادية بنين</li>
-                  <li><strong className="text-ink">الفرع الثاني:</strong> قرية النويرة — بجوار مجمع الجيدة الإسلامي</li>
-                  <li><strong className="text-ink">الفرع الثالث:</strong> مدينة إهناسيا — بجوار هايبر المصرية</li>
-                  <li><strong className="text-ink">الفرع الرابع:</strong> قرية النويرة — المنطقة الجديدة خلف المدرسة الإعدادية بنين</li>
-                </ul>
+                <p className="text-xs text-ink-soft font-medium pr-4">
+                  محافظة بني سويف — مركز سمسطا — قرية معجون
+                </p>
               </div>
 
               {/* بطاقة التواصل بالواتساب السريع */}
               <a
-                href="https://api.whatsapp.com/send?phone=201110411408"
+                href="https://api.whatsapp.com/send?phone=201119838926"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 p-3.5 mb-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-all font-bold text-sm"
               >
                 <MessageCircle size={18} className="text-emerald-600 dark:text-emerald-400" />
                 <span>للتواصل المباشر عبر واتساب:</span>
-                <span dir="ltr" className="font-mono text-base font-black">01110411408</span>
+                <span dir="ltr" className="font-mono text-base font-black">+20 11 19838926</span>
               </a>
 
               <div className="flex gap-3">

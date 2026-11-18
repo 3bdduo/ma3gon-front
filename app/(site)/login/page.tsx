@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -58,7 +58,7 @@ export default function LoginPage() {
           <div className="text-center mb-8 flex flex-col items-center">
             <Logo size="lg" layout="vertical" showText={false} className="mb-4" />
             <h1 className="font-ruqaa font-bold text-3xl sm:text-4xl leading-[1.5] text-ink">تسجيل الدخول</h1>
-            <p className="text-xs sm:text-sm text-ink-mute mt-1">مدرسة القرءان الكريم — جمعية شباب المستقبل</p>
+            <p className="text-xs sm:text-sm text-ink-mute mt-1">مدرسة القرءان الكريم بقرية معجون</p>
           </div>
 
           <div className="grid grid-cols-3 gap-2 mb-6 p-1.5 rounded-3xl bg-bg-alt shadow-[inset_0_1px_3px_rgba(0,0,0,0.12)]" role="tablist">

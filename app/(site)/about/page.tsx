@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IslamicDivider } from "@/components/ui/IslamicDivider";
@@ -17,7 +17,7 @@ export default function AboutPage() {
   return (
     <div className="py-14 sm:py-24">
       <Container>
-        <SectionHeading eyebrow="من نحن" title="عن مدرسة القرءان الكريم التابعة لجميعة شباب المستقبل" />
+        <SectionHeading eyebrow="من نحن" title="عن مدرسة القرءان الكريم بقرية معجون" />
 
         <Reveal delay={0.1} className="max-w-3xl mx-auto mt-10 text-center text-ink-soft leading-loose text-base sm:text-lg">
           <p>

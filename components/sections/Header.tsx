@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X, LogIn, LayoutDashboard } from "lucide-react";
-import { m } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -67,11 +67,10 @@ export function Header() {
       <ScrollProgress />
 
       <header
-        className={`sticky top-0 z-50 pt-[env(safe-area-inset-top)] border-b transition-[background-color,box-shadow,border-color] duration-300 ${
-          scrolled || open
-            ? "glass border-line sh-lift"
-            : "bg-bg/80 border-transparent shadow-none"
-        }`}
+        className={`sticky top-0 z-50 pt-[env(safe-area-inset-top)] border-b transition-[background-color,box-shadow,border-color] duration-300 ${scrolled || open
+          ? "glass border-line sh-lift"
+          : "bg-bg/80 border-transparent shadow-none"
+          }`}
       >
         <Container className="flex items-center justify-between gap-2 lg:gap-4 h-18 sm:h-20">
           {/* لوجو مدرسة القرءان الكريم ع اليمين (كبير وبارز — والضغط عليه يفتح تفاصيل وشعار الجمعية والمدرسة) */}
@@ -92,9 +91,8 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-2.5 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold transition-colors duration-200 whitespace-nowrap shrink-0 ${
-                    active ? "text-on-brand" : "text-ink-soft hover:text-brand-ink hover:bg-brand-soft"
-                  }`}
+                  className={`relative px-2.5 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold transition-colors duration-200 whitespace-nowrap shrink-0 ${active ? "text-on-brand" : "text-ink-soft hover:text-brand-ink hover:bg-brand-soft"
+                    }`}
                 >
                   {active && (
                     <m.span
@@ -142,16 +140,14 @@ export function Header() {
             >
               <span className="relative h-5 w-5 flex items-center justify-center pointer-events-none">
                 <span
-                  className={`absolute inset-0 flex items-center justify-center transition-all duration-200 ${
-                    open ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-50"
-                  }`}
+                  className={`absolute inset-0 flex items-center justify-center transition-all duration-200 ${open ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-50"
+                    }`}
                 >
                   <X size={22} />
                 </span>
                 <span
-                  className={`absolute inset-0 flex items-center justify-center transition-all duration-200 ${
-                    !open ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-50"
-                  }`}
+                  className={`absolute inset-0 flex items-center justify-center transition-all duration-200 ${!open ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-50"
+                    }`}
                 >
                   <Menu size={22} />
                 </span>
@@ -174,9 +170,8 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-colors ${
-                    isActive(link.href) ? "bg-brand text-on-brand" : "text-ink hover:bg-bg-alt"
-                  }`}
+                  className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-colors ${isActive(link.href) ? "bg-brand text-on-brand" : "text-ink hover:bg-bg-alt"
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -218,7 +213,7 @@ export function Header() {
         )}
       </header>
 
-      {/* المودال الشامل لمعلومات المدرسة وجمعية شباب المستقبل */}
+      {/* المودال الشامل لمعلومات مدرسة القرءان الكريم بقرية معجون */}
       <LogoModal open={logoModal} onClose={() => setLogoModal(false)} />
     </>
   );

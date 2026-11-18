@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -18,7 +18,7 @@ interface ChatMessage {
 
 const WELCOME: ChatMessage = {
   role: "assistant",
-  text: "أهلاً بك! أنا المساعد الذكي لمدرسة القرءان الكريم التابعة لجميعة شباب المستقبل. كيف يمكنني مساعدتك اليوم؟ يمكنك سؤالي عن أي صفحة، منهج، أو طريقة استخدام للمنصة.",
+  text: "أهلاً بك! أنا المساعد الذكي لمدرسة القرءان الكريم بقرية معجون. كيف يمكنني مساعدتك اليوم؟ يمكنك سؤالي عن أي صفحة، منهج، أو طريقة استخدام للمنصة.",
 };
 
 const SUGGESTIONS = [
@@ -159,7 +159,7 @@ export function AssistantWidget() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="المساعد الذكي لموقع مدرسة القرءان الكريم التابعة لجميعة شباب المستقبل"
+        aria-label="المساعد الذكي لموقع مدرسة القرءان الكريم بقرية معجون"
         aria-hidden={open}
         tabIndex={open ? -1 : 0}
         className={`fixed bottom-5 left-5 z-40 w-14 h-14 rounded-full bg-brand text-on-brand flex items-center justify-center sh-float hover:sh-brand transition-all duration-200 cursor-pointer group ${open ? "opacity-0 pointer-events-none scale-90" : "opacity-100 pointer-events-auto scale-100"
