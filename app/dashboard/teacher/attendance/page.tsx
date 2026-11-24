@@ -102,6 +102,8 @@ export default function TeacherAttendancePage() {
 
   const presentCount = records.filter((r) => r.status === "حاضر").length;
   const absentCount = records.filter((r) => r.status === "غائب").length;
+  const lateCount = records.filter((r) => r.status === "متأخر").length;
+  const excusedCount = records.filter((r) => r.status === "مستأذن").length;
 
   return (
     <div className="space-y-6 max-w-7xl">
@@ -155,13 +157,23 @@ export default function TeacherAttendancePage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 text-xs font-bold">
+        <div className="flex items-center gap-3 text-xs font-bold flex-wrap">
           <span className="flex items-center gap-1.5 text-brand-ink bg-brand-soft px-3 py-1.5 rounded-xl">
             <CheckCircle2 size={15} /> حضور: {presentCount}
           </span>
           <span className="flex items-center gap-1.5 text-danger-ink bg-danger-soft px-3 py-1.5 rounded-xl">
             <XCircle size={15} /> غياب: {absentCount}
           </span>
+          {lateCount > 0 && (
+            <span className="flex items-center gap-1.5 text-warning bg-warning/10 px-3 py-1.5 rounded-xl">
+              <Clock size={15} /> متأخر: {lateCount}
+            </span>
+          )}
+          {excusedCount > 0 && (
+            <span className="flex items-center gap-1.5 text-gold-ink bg-gold-soft px-3 py-1.5 rounded-xl">
+              <Clock size={15} /> مستأذن: {excusedCount}
+            </span>
+          )}
           <span className="text-ink-mute">إجمالي الحلقة: {records.length}</span>
         </div>
       </div>
@@ -219,6 +231,19 @@ export default function TeacherAttendancePage() {
                         >
                           <XCircle size={14} />
                           <span>غائب</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => handleStatusChange(r.student_id, "متأخر")}
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                            r.status === "متأخر"
+                              ? "bg-warning text-white shadow-sm"
+                              : "bg-bg-alt text-ink-mute hover:bg-warning/20 hover:text-warning"
+                          }`}
+                        >
+                          <Clock size={14} />
+                          <span>متأخر</span>
                         </button>
 
                         <button

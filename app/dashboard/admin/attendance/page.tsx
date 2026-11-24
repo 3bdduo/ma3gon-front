@@ -147,6 +147,8 @@ export default function AdminAttendancePage() {
   const currentList = tab === "regular" ? records : eduGroupStudents;
   const presentCount = currentList.filter((r) => r.status === "حاضر").length;
   const absentCount = currentList.filter((r) => r.status === "غائب").length;
+  const lateCount = currentList.filter((r) => r.status === "متأخر").length;
+  const excusedCount = currentList.filter((r) => r.status === "مستأذن").length;
 
   return (
     <div className="space-y-6 max-w-7xl">
@@ -251,13 +253,23 @@ export default function AdminAttendancePage() {
         </div>
 
         {/* ملخص الحضور */}
-        <div className="flex items-center gap-4 text-xs font-bold">
+        <div className="flex items-center gap-4 text-xs font-bold flex-wrap">
           <span className="flex items-center gap-1.5 text-brand-ink bg-brand-soft px-3 py-1.5 rounded-xl">
             <CheckCircle2 size={15} /> حضور: {presentCount}
           </span>
           <span className="flex items-center gap-1.5 text-danger-ink bg-danger-soft px-3 py-1.5 rounded-xl">
             <XCircle size={15} /> غياب: {absentCount}
           </span>
+          {lateCount > 0 && (
+            <span className="flex items-center gap-1.5 text-warning bg-warning/10 px-3 py-1.5 rounded-xl">
+              <Clock size={15} /> متأخر: {lateCount}
+            </span>
+          )}
+          {excusedCount > 0 && (
+            <span className="flex items-center gap-1.5 text-gold-ink bg-gold-soft px-3 py-1.5 rounded-xl">
+              <Clock size={15} /> مستأذن: {excusedCount}
+            </span>
+          )}
           <span className="text-ink-mute">الإجمالي: {currentList.length}</span>
         </div>
       </div>
@@ -315,6 +327,19 @@ export default function AdminAttendancePage() {
                         >
                           <XCircle size={14} />
                           <span>غائب</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => handleStatusChange(item.student_id, "متأخر")}
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                            item.status === "متأخر"
+                              ? "bg-warning text-white shadow-sm"
+                              : "bg-bg-alt text-ink-mute hover:bg-warning/20 hover:text-warning"
+                          }`}
+                        >
+                          <Clock size={14} />
+                          <span>متأخر</span>
                         </button>
 
                         <button
