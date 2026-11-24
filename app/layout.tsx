@@ -6,7 +6,6 @@ import { ToastProvider } from "@/components/ui/Toast";
 import { MotionProvider } from "@/components/ui/MotionProvider";
 import { AppBootstrap } from "@/components/ui/AppBootstrap";
 import { FormValidator } from "@/components/ui/FormValidator";
-import { AssistantWidget } from "@/components/ui/AssistantWidget";
 import { API_URL } from "@/lib/api";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -132,7 +131,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {children}
                 <AppBootstrap />
                 <FormValidator />
-                <AssistantWidget />
               </ToastProvider>
             </AuthProvider>
           </ThemeProvider>

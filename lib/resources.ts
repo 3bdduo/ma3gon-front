@@ -430,17 +430,3 @@ export const contactApi = {
 export const healthApi = {
   check: () => api.get<{ status: string; database: string; timestamp: string }>("/health"),
 };
-
-// 21. المساعد الذكي
-export interface AssistantReply {
-  reply: string;
-  navigateTo: string | null;
-}
-export const assistantApi = {
-  ask: (body: {
-    message: string;
-    history?: { role: "user" | "assistant"; text: string }[];
-    role?: "guest" | "admin" | "teacher" | "student";
-    currentPath?: string;
-  }) => api.post<AssistantReply>("/assistant/ask", body),
-};
