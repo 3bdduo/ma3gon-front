@@ -1,15 +1,17 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Phone, MapPin, Send, MessageCircle, Building2 } from "lucide-react";
+import { Phone, MapPin, Send, MessageCircle, Building2, Loader2 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { useToast } from "@/components/ui/Toast";
+import { contactApi } from "@/lib/resources";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", phone: "", subject: "الاستفسار عن التسجيل", message: "" });
+  const [sending, setSending] = useState(false);
   const { showToast } = useToast();
 
   const subjects = [
@@ -20,13 +22,27 @@ export default function ContactPage() {
     "أخرى",
   ];
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!form.name.trim() || !form.phone.trim() || !form.message.trim()) {
       showToast("يرجى ملء جميع البيانات المطلوبة", "error");
       return;
     }
 
+    setSending(true);
+
+    // ١) حفظ الرسالة في قاعدة البيانات
+    try {
+      await contactApi.submit({
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        message: `[${form.subject}] ${form.message.trim()}`,
+      });
+    } catch {
+      // لو API فشل نكمل الواتساب — مش نوقف المستخدم
+    }
+
+    // ٢) فتح واتساب في نفس الوقت
     const formattedMessage = [
       "السلام عليكم ورحمة الله وبركاته،",
       "",
@@ -42,13 +58,14 @@ export default function ContactPage() {
 
     const url = `https://api.whatsapp.com/send?phone=201119838926&text=${encodeURIComponent(formattedMessage)}`;
 
-    showToast("تم تجهيز رسالتك! جاري تحويلك إلى واتساب...", "success");
+    showToast("تم إرسال رسالتك! جاري تحويلك إلى واتساب...", "success");
 
     const win = window.open(url, "_blank", "noopener,noreferrer");
     if (!win || win.closed || typeof win.closed === "undefined") {
       window.location.href = url;
     }
 
+    setSending(false);
     setForm({ name: "", phone: "", subject: "الاستفسار عن التسجيل", message: "" });
   }
 
@@ -197,9 +214,9 @@ export default function ContactPage() {
                 />
               </div>
 
-              <Button type="submit" className="w-full justify-center">
-                <Send size={18} />
-                إرسال عبر واتساب
+              <Button type="submit" className="w-full justify-center" disabled={sending}>
+                {sending ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                {sending ? "جاري الإرسال..." : "إرسال عبر واتساب"}
               </Button>
             </form>
           </Reveal>
