@@ -84,6 +84,7 @@ export const viewport: Viewport = {
 };
 
 // بيضبط المود قبل أول رسمة ويمنع أخطاء الـ hydration الناتجة عن إضافات المتصفح (مثل إضافات التحميل والتعبئة التلقائية)
+// + بيمنع كليك يمين وأكثر اختصارات DevTools
 const headInitScript = `(function(){
   try {
     var s = localStorage.getItem("qs-theme");
@@ -103,6 +104,22 @@ const headInitScript = `(function(){
         }
       }).observe(document.documentElement, { attributes: true, subtree: true });
     }
+  } catch(e) {}
+  try {
+    // منع كليك يمين
+    document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+    // منع اختصارات DevTools
+    document.addEventListener('keydown', function(e){
+      var k = e.key;
+      // F12
+      if (k === 'F12') { e.preventDefault(); return; }
+      // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C / Ctrl+Shift+K
+      if (e.ctrlKey && e.shiftKey && (k==='I'||k==='i'||k==='J'||k==='j'||k==='C'||k==='c'||k==='K'||k==='k')) { e.preventDefault(); return; }
+      // Ctrl+U (عرض المصدر)
+      if (e.ctrlKey && (k==='U'||k==='u')) { e.preventDefault(); return; }
+      // Ctrl+S (حفظ الصفحة)
+      if (e.ctrlKey && (k==='S'||k==='s')) { e.preventDefault(); return; }
+    });
   } catch(e) {}
 })();`;
 
