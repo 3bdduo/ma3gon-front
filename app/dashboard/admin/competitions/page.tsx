@@ -176,9 +176,15 @@ export default function AdminCompetitionsPage() {
   // ─── حفظ نتائج مسابقة القرآن ────────────────────
   async function handleSaveQuranResults() {
     if (!activeQuranComp) return;
+    const max = activeQuranComp.maxScore ?? 100;
+    // clamp: كل درجة بين 0 والحد الأقصى
+    const clamped = scoreEntries.map((e) => ({
+      ...e,
+      score: Math.min(max, Math.max(0, Math.round(Number(e.score) || 0))),
+    }));
     setSavingResults(true);
     try {
-      await competitionsApi.saveResults(activeQuranComp.id, scoreEntries);
+      await competitionsApi.saveResults(activeQuranComp.id, clamped);
       showToast("تم إنهاء النتيجة وإعلانها للطلاب بنجاح ✅", "success");
       setActiveQuranComp(null);
       loadQuranData();
@@ -243,9 +249,15 @@ export default function AdminCompetitionsPage() {
   // ─── حفظ نتائج امتحان تربوي ─────────────────────
   async function handleSaveEduResults() {
     if (!activeEduComp) return;
+    const max = activeEduComp.maxScore ?? 100;
+    // clamp: كل درجة بين 0 والحد الأقصى
+    const clamped = eduScoreEntries.map((e) => ({
+      ...e,
+      score: Math.min(max, Math.max(0, Math.round(Number(e.score) || 0))),
+    }));
     setSavingEduResults(true);
     try {
-      await competitionsApi.saveResults(activeEduComp.id, eduScoreEntries);
+      await competitionsApi.saveResults(activeEduComp.id, clamped);
       showToast("تم إنهاء النتيجة وإعلانها للطلاب بنجاح ✅", "success");
       setActiveEduComp(null);
       loadEduData();

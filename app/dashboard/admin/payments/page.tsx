@@ -36,6 +36,16 @@ function EditStudentFeeModal({
   onClose: () => void;
 }) {
   const [amount, setAmount] = useState(currentAmount);
+  const [error, setError] = useState("");
+
+  function handleConfirm() {
+    const val = Math.round(Number(amount));
+    if (!Number.isFinite(val) || val <= 0) {
+      setError("يجب إدخال قيمة أكبر من صفر");
+      return;
+    }
+    onConfirm(val);
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
@@ -53,17 +63,18 @@ function EditStudentFeeModal({
           <label className="field-label">القيمة الجديدة (جنيه)</label>
           <input
             type="number"
-            min={0}
+            min={1}
             value={amount}
-            onChange={(e) => setAmount(Number(e.target.value))}
+            onChange={(e) => { setAmount(Number(e.target.value)); setError(""); }}
             className="field font-bold"
             autoFocus
           />
+          {error && <p className="text-xs text-danger-ink mt-1">{error}</p>}
         </div>
         <div className="flex gap-3 pt-2">
           <Button
             className="flex-1"
-            onClick={() => onConfirm(amount)}
+            onClick={handleConfirm}
           >
             حفظ
           </Button>
@@ -91,6 +102,16 @@ function EditGroupFeeModal({
   onClose: () => void;
 }) {
   const [amount, setAmount] = useState(defaultAmount);
+  const [error, setError] = useState("");
+
+  function handleConfirm() {
+    const val = Math.round(Number(amount));
+    if (!Number.isFinite(val) || val <= 0) {
+      setError("يجب إدخال قيمة أكبر من صفر");
+      return;
+    }
+    onConfirm(val);
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
@@ -111,15 +132,16 @@ function EditGroupFeeModal({
           <label className="field-label">القيمة الجديدة (جنيه)</label>
           <input
             type="number"
-            min={0}
+            min={1}
             value={amount}
-            onChange={(e) => setAmount(Number(e.target.value))}
+            onChange={(e) => { setAmount(Number(e.target.value)); setError(""); }}
             className="field font-bold"
             autoFocus
           />
+          {error && <p className="text-xs text-danger-ink mt-1">{error}</p>}
         </div>
         <div className="flex gap-3 pt-2">
-          <Button className="flex-1" onClick={() => onConfirm(amount)}>
+          <Button className="flex-1" onClick={handleConfirm}>
             تطبيق على الكل
           </Button>
           <Button variant="outline" className="flex-1" onClick={onClose}>
